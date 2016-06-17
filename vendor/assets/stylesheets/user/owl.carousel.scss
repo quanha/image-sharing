@@ -26,13 +26,13 @@
 	height: 24px;
 }
 .owl-next{
-	background: url(../images/pagenate.png) no-repeat -32px 0px;
+	background: url(asset-path('pagenate.png')) no-repeat -32px 0px;
 	position: absolute;
 	right: 0%;
 	top: -41px;
 }
 .owl-prev{
-	background: url(../images/pagenate.png) no-repeat 0px 0px;
+	background: url(asset-path('pagenate.png')) no-repeat 0px 0px;
 	position: absolute;
 	right: 3%;
 	top: -41px;

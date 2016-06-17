@@ -24,7 +24,7 @@ body a{
 	
 }
 .top-header{
-	background: url(top-header-bg.png) no-repeat 0px 0px;
+	background: url(asset-path('top-header-bg.png')) no-repeat 0px 0px;
 	background-size: cover;
 	min-height: 80px;
 }
@@ -111,7 +111,7 @@ body a{
 	height: 20px;
 	outline:none;
 	display: inline-block;
-	background: url(search-icon.png) no-repeat 0px 0px;
+	background: url(asset-path('search-icon.png')) no-repeat 0px 0px;
 	border: none;
 	position: absolute;
 	outline: none;
@@ -310,7 +310,7 @@ span.menu{
 	text-decoration: none;
 	height: 30px;
 	width: 19px;
-	background: transparent url("slide-arrows.png") no-repeat left top;
+	background: transparent url(asset-path("slide-arrows.png")) no-repeat left top;
 }
 .callbacks_nav:active {
   opacity: 0.7;
@@ -446,7 +446,7 @@ a.p-btn:hover{
 .product-pic-info-price label{
 	width:55px;
 	height:77px;
-	background:url(dis-tag.png) no-repeat 0px 0px;
+	background:url(asset-path('dis-tag.png')) no-repeat 0px 0px;
 	display:inline-block;
 	position:absolute;
 	top:0px;
@@ -482,9 +482,9 @@ a.p-btn:hover{
 }
 .bottom-grids-right input[type="submit"]{
 	width:34px;
-	height:34px;
+	height:30px;
 	display:inline-block;
-	background:url(send-ico.png) no-repeat 0px 0px;
+	background:url(asset-path('send-ico.png')) no-repeat 0px 0px;
 	border:none;
 	outline:none;
 	cursor:pointer;
@@ -515,7 +515,7 @@ a.p-btn:hover{
 }
 /*-- footer --*/
 .footer{
-	background: url(footer-bg.png) repeat-x 0px 0px #ecebdf;
+	background: url(asset-path('footer-bg.png')) repeat-x 0px 0px #ecebdf;
 	padding: 4em 0 2em;
 }
 .footer-grid ul{
@@ -594,7 +594,7 @@ a.p-btn:hover{
 	width:64px;
 	height:64px;
 	display:inline-block;
-	background:url(social-icons.png) no-repeat 0px 0px;
+	background:url(asset-path('social-icons.png')) no-repeat 0px 0px;
 }
 .social-icons ul li a span.facebook{
 	background-position:0px 0px;
@@ -648,7 +648,7 @@ a.p-btn:hover{
 	width:35px;
 	height:24px;
 	display:inline-block;
-	background:url(cards.png) no-repeat 0px 0px;
+	background:url(asset-path('cards.png')) no-repeat 0px 0px;
 }
 .footer-bottom-right ul li span.visa{
 	background-position:0px 0px;
