@@ -25,12 +25,18 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 #Additional Gem
 
-gem 'devise'
 
 gem 'therubyracer'
 gem 'less-rails' #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
 gem 'twitter-bootstrap-rails'
+gem 'font-awesome-rails'
 
+gem 'devise'
+gem 'devise-bootstrap-views'
+gem 'paperclip'
+
+gem 'kaminari'
+gem 'enumerize'
 
 
 # Use ActiveModel has_secure_password

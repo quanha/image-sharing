@@ -5,14 +5,20 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'pages#index'
+  root 'user/pages#index'
 
-  get 'collections' => 'pages#collections'
-  get 'new_arrivals' => 'pages#new_arrivals'
-  get 'sales' => 'pages#sales'
-  get 'accessories' => 'pages#accessories'
-  get 'contact' => 'pages#contact'
-  get 'about_us' => 'pages#about_us'
+  get 'collections' => 'user/pages#collections'
+  get 'new_arrivals' => 'user/pages#new_arrivals'
+  get 'sales' => 'user/pages#sales'
+  get 'accessories' => 'user/pages#accessories'
+  get 'contact' => 'user/pages#contact'
+  get 'about_us' => 'user/pages#about_us'
+
+  namespace :admin do
+    root 'pages#dashboard'
+
+    resources :users
+  end
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

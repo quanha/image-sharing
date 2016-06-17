@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Admin</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <%= stylesheet_link_tag 'admin', media: 'all', 'data-turbolinks-track' => true  %>
+  <%= csrf_meta_tags %>
+</head>
+<body class="">
+
+<!-- HEADER -->
+<%= render('layouts/admin/header') %>
+<!-- END HEADER -->
+
+<!-- LEFT PANEL -->
+<%= render('layouts/admin/left_panel') %>
+<!-- END LEFT PANEL -->
+
+<div id="main" role="main">
+
+  <!-- RIBBON -->
+  <div id="ribbon">
+
+  </div>
+  <!-- END RIBBON -->
+
+  <%= yield %>
+
+</div>
+<!-- END MAIN PANEL -->
+
+<!-- FOOTER -->
+<%= render('layouts/admin/footer') %>
+<!-- END FOOTER -->
+
+<!-- SHORTCUT AREA -->
+<%= render('layouts/admin/shortcut') %>
+<!-- END SHORTCUT AREA -->
+
+<%= javascript_include_tag 'admin', 'data-turbolinks-track' => true %>
+</body>
+</html>
