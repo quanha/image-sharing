@@ -21,6 +21,7 @@ Rails.application.routes.draw do
     resources :products
     resources :suppliers
     resources :categories
+    resources :backend_menus
   end
 
   # Example of regular route:

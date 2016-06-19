@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  parent_id: 1
+  name: MyString
+  icon: MyString
+  role: MyString
+  plugin: MyString
+  controller: MyString
+  action: MyString
+  hightlight: MyString
+  display_order: 1
+
+two:
+  parent_id: 1
+  name: MyString
+  icon: MyString
+  role: MyString
+  plugin: MyString
+  controller: MyString
+  action: MyString
+  hightlight: MyString
+  display_order: 1

@@ -1,11 +1,11 @@
 <div class="row">
   <div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
-    <h1 class="page-title txt-color-blueDark"><i class="fa-fw fa fa-home"></i> System <span>> List of suppliers</span></h1>
+    <h1 class="page-title txt-color-blueDark"><i class="fa-fw fa fa-home"></i> System <span>> List of backend menus</span></h1>
   </div>
   <div class="col-xs-12 col-sm-5 col-md-5 col-lg-8">
     <ul id="sparks" class="">
       <li class="sparks-info">
-        <%= link_to 'Add new supplier', new_admin_supplier_path, :class => 'btn btn-primary'%>
+        <%= link_to 'Add new backend menu', new_admin_backend_menu_path, :class => 'btn btn-primary'%>
       </li>
     </ul>
   </div>
@@ -15,7 +15,7 @@
     <div class="jarviswidget jarviswidget-color-darken" id="wid-id-0" data-widget-colorbutton="false" data-widget-deletebutton="false" data-widget-editbutton="true">
       <header>
         <span class="widget-icon"> <i class="fa fa-table"></i> </span>
-        <h2><%= 'List of Suppliers' %></h2>
+        <h2><%= 'List of backend menus' %></h2>
       </header>
       <div>
         <div class="jarviswidget-editbox"></div>
@@ -25,29 +25,26 @@
             <thead>
             <tr>
               <th class="hasinput"><input type="text" class="form-control" placeholder="Filter name" /></th>
-              <th class="hasinput"><input type="text" class="form-control" placeholder="Filter description" /></th>
+              <th class="hasinput"><input type="text" class="form-control" placeholder="Filter url" /></th>
               <th class="hasinput" ></th>
             </tr>
             <tr>
               <th width="10%">Name</th>
-              <th>Description</th>
+              <th>Url</th>
               <th width="14%">Actions</th>
             </tr>
             </thead>
             <tbody>
-            <% @suppliers.each_with_index do |supplier| %>
+            <% @backend_menus.each_with_index do |backend_menu, index| %>
                 <tr>
-                  <td><%= supplier.name %></td>
-                  <td><%= supplier.description %></td>
+                  <td><%= backend_menu.name %></td>
+                  <td><%= backend_menu.url %></td>
                   <td>
                     <center>
-                      <%= link_to(admin_supplier_path(supplier), 'data-no-turbolink' => true, 'escape' => false, 'class' => 'btn btn-sm btn-default') do %>
-                          <i class="fa fa-eye" title="Show" class="btn btn-sm btn-default" escape="false"></i>
-                      <% end %>
-                      <%= link_to(edit_admin_supplier_path(supplier), 'escape' => false, 'class' => 'btn btn-sm btn-default') do%>
+                      <%= link_to(edit_admin_backend_menu_path(backend_menu), 'escape' => false, 'class' => 'btn btn-sm btn-default') do%>
                           <i class="fa fa-edit" title="Edit"></i>
                       <% end %>
-                      <%= link_to(admin_supplier_path(supplier), 'class' => 'btn btn-sm btn-default deleteLin', method: :delete, data: { confirm: 'Are you sure?' }) do %>
+                      <%= link_to(admin_backend_menu_path(backend_menu), 'class' => 'btn btn-sm btn-default deleteLin', method: :delete, data: { confirm: 'Are you sure?' }) do %>
                           <i class="fa fa-trash-o" title="Delete"></i>
                       <% end %>
                     </center>

@@ -33,7 +33,7 @@ class Admin::SuppliersController < AdminController
     respond_to do |format|
       if @supplier.update(supplier_params)
         flash[:success] = "Supplier was successfully updated."
-        format.html { redirect_to admin_supplier_path(@supplier) }
+        format.html { redirect_to admin_suppliers_path }
       else
         flash[:danger] = @supplier.errors.full_messages
         format.html { render :edit }
