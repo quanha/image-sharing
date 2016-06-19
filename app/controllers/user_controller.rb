@@ -6,7 +6,7 @@ class UserController < ActionController::Base
 
   private
   def authenticate_user
-    redirect_to '/admin' if user_signed_in? && !current_user.role.user?
+    redirect_to admin_users_path if user_signed_in? && !current_user.role.user?
   end
 
 end

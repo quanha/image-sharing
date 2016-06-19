@@ -1,0 +1,54 @@
+<div class="row">
+  <div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
+    <h1 class="page-title txt-color-blueDark">
+      <i class="fa fa-cog fa-fw "></i>
+      <%= 'System' %>
+      <span>&gt;
+        <%= link_to 'List of suppliers', admin_suppliers_path %>
+            </span>
+    </h1>
+  </div>
+</div>
+<div class="row">
+  <article class="col-sm-12 col-md-12 col-lg-12 sortable-grid ui-sortable">
+
+    <div class="jarviswidget jarviswidget-sortable jarviswidget-color-darken" id="wid-id-4" data-widget-editbutton="false" data-widget-custombutton="false" role="widget" style="">
+
+      <header role="heading">
+        <span class="widget-icon">
+            <i class="fa fa-user"></i>
+        </span>
+      </header>
+
+      <div role="content">
+        <div class="widget-body">
+          <fieldset>
+            <table id="user" class="table table-bordered table-striped" style="clear: both">
+              <tbody>
+              <tr>
+                <td style="width:35%;">Name</td>
+                <td style="width:65%"><%= @supplier.name %></td>
+              </tr>
+              <tr>
+                <td style="width:35%;">Description</td>
+                <td style="width:65%"><%= @supplier.description %></td>
+              </tr>
+              </tbody>
+            </table>
+          </fieldset>
+
+          <div class="form-actions">
+            <div class="row">
+              <div class="col-md-12">
+                <%= link_to 'Back', admin_suppliers_path, :class => 'btn btn-default'%>
+                <%= link_to 'Edit', edit_admin_supplier_path(@supplier) , :class => 'btn btn-primary'%>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </article>
+</div>

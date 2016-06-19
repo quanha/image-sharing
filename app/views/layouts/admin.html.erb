@@ -24,7 +24,10 @@
   </div>
   <!-- END RIBBON -->
 
-  <%= yield %>
+  <div id="content">
+    <%= render('shared/message') %>
+    <%= yield %>
+  </div>
 
 </div>
 <!-- END MAIN PANEL -->
