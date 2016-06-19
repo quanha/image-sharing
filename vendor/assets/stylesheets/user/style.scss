@@ -1,3 +1,4 @@
+
 /*--
 Author: W3layouts
 Author URL: http://w3layouts.com
@@ -34,6 +35,10 @@ body a{
 }
 .rigister-info ul li{
 	display:inline-block;
+}
+.rigister-info ul li p{
+	display:inline-block;
+	color: antiquewhite;
 }
 .rigister-info ul li a{
 	background:#f1e1ce;
@@ -479,6 +484,7 @@ a.p-btn:hover{
 	position:relative;
 	outline:none;
 	color:#b0aaa0;
+  height: 31.3px;
 }
 .bottom-grids-right input[type="submit"]{
 	width:34px;
@@ -1912,3 +1918,52 @@ ul.prosuct-qty{
 		padding:0.3em 0;
 	}
 }
+
+.panel-devise{
+	margin-top: 20px;
+}
+
+.panel-devise input[type="email"], [type="password"], [type="text"]{
+	border:1px solid #b0aaa0;
+	background:#f7f6ee;
+	color: black;
+	padding:0.4em 0.6em;
+	font-size:0.875em;
+	position:relative;
+	width:100%;
+	outline:none;
+	text-indent: 3px;
+	height: 40px;
+}
+
+.panel-devise input[type="checkbox"]{
+	margin-top: 10px;
+	border:1px solid #b0aaa0;
+	background:#f7f6ee;
+	color:#b0aaa0;
+	padding:0.4em 0.6em;
+	font-size:0.875em;
+	position:relative;
+	width:15px;
+	outline:none;
+	height: 16px;
+}
+
+.panel-devise input[type="submit"]{
+	margin-top: 10px;
+	border: none;
+	background:#8b4613;
+	font-family: 'Lora', serif;
+	color:#FFF;
+	padding:0.7em 1.2em;
+	text-transform:uppercase;
+	text-decoration:none;
+	font-size:0.875em;
+}
+
+.panel-devise hr{
+  margin-bottom: 10px;
+  border: 0.5px solid;
+  opacity: 0.3;
+}
+

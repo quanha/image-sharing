@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'pages/index'
+  devise_for :users
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -18,6 +18,9 @@ Rails.application.routes.draw do
     root 'pages#dashboard'
 
     resources :users
+    resources :products
+    resources :suppliers
+    resources :categories
   end
 
   # Example of regular route:

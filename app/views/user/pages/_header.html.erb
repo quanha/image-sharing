@@ -4,8 +4,13 @@
     <div class="container">
       <div class="rigister-info">
         <ul>
-          <li><a href="#">Login</a></li>
-          <li><a href="#">SignUp</a></li>
+          <% unless user_signed_in? %>
+            <li><%= link_to 'Login', new_user_session_url %></li>
+            <li><%= link_to 'Sign Up', new_user_registration_url %></li>
+          <% else %>
+              <li><p>Welcome <%= current_user.email %></p></li>
+              <li><%= link_to 'Sign Out', destroy_user_session_url, :method => :delete %></li>
+          <% end %>
           <div class="clearfix"> </div>
         </ul>
       </div>

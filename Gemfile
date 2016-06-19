@@ -33,11 +33,13 @@ gem 'font-awesome-rails'
 
 gem 'devise'
 gem 'devise-bootstrap-views'
+
 gem 'paperclip'
 
 gem 'kaminari'
 gem 'enumerize'
 
+gem 'font-awesome-sass', '~> 4.6.2'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
