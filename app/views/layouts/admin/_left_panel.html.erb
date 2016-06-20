@@ -23,7 +23,8 @@
           url = params['children'].present? ? '#' : url
           if params['highlight'].present?
             if original_fullpath.include? params['highlight']
-              class_name += ' active open '
+              class_name += ' active '
+              class_name += params['children'].present? ? ' open ' : ''
             end
           end
 
