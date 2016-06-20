@@ -11,22 +11,19 @@ class AdminController < ActionController::Base
   def set_menu
     parents = BackendMenu.where('parent_id IS NULL OR parent_id = ?', 0)
     menus = generate_menu(parents)
-    menus.each do |menu|
-      children = BackendMenu.where(parent_id: menu['id'])
+    parents.each do |parent|
+      children = BackendMenu.where(parent_id: parent.id)
       if children.count > 0
-        menu += ['children' => generate_menu(children)]
-        byebug
+        menus[parent.name]['children'] = generate_menu(children)
       end
     end
-    menus
+    @left_menus = menus
   end
 
   def generate_menu(menu_input)
-    menu_output = Array.new
+    menu_output = Hash.new
     menu_input.each do |menu|
-      menu_output += [
-          'id' => menu.id,
-          'name' => menu.name,
+      menu_output[menu.name] = Hash[
           'icon' => menu.icon,
           'url' => menu.url,
           'highlight' => menu.highlight
