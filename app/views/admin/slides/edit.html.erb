@@ -4,7 +4,7 @@
       <i class="fa fa-cog fa-fw "></i>
       <%= 'System' %>
       <span>&gt;
-        <%=  link_to 'List of categories', admin_categories_path %>
+        <%=  link_to 'List of slides', admin_slides_path %>
           </span>
     </h1>
   </div>
@@ -18,7 +18,7 @@
               <span class="widget-icon">
                   <i class="fa fa-edit"></i>
               </span>
-        <h2><%= 'Edit Category' %></h2>
+        <h2><%= @slide.new_record? ? 'New Supplier' : 'Edit Supplier'%></h2>
       </header>
 
       <div role="content">

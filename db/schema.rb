@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160619144848) do
+ActiveRecord::Schema.define(version: 20160621154113) do
 
   create_table "backend_menus", force: :cascade do |t|
     t.integer  "parent_id",     limit: 4
@@ -46,6 +46,17 @@ ActiveRecord::Schema.define(version: 20160619144848) do
     t.datetime "updated_at",                null: false
   end
 
+  create_table "slides", force: :cascade do |t|
+    t.string   "name",               limit: 255
+    t.text     "description",        limit: 65535
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+    t.string   "image_file_name",    limit: 255
+    t.string   "image_content_type", limit: 255
+    t.integer  "image_file_size",    limit: 4
+    t.datetime "image_updated_at"
+  end
+
   create_table "suppliers", force: :cascade do |t|
     t.string   "name",        limit: 255
     t.text     "description", limit: 65535
@@ -58,7 +69,6 @@ ActiveRecord::Schema.define(version: 20160619144848) do
     t.string   "encrypted_password",     limit: 255, default: "", null: false
     t.string   "first_name",             limit: 255
     t.string   "last_name",              limit: 255
-    t.string   "image",                  limit: 255
     t.string   "role",                   limit: 255, default: "", null: false
     t.string   "reset_password_token",   limit: 255
     t.datetime "reset_password_sent_at"
