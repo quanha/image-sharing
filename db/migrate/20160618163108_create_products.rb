@@ -5,9 +5,8 @@ class CreateProducts < ActiveRecord::Migration
       t.text :description
       t.text :detail
       t.string :code
-      t.string :image
       t.integer :category_id
-      t.integer :suppler_id
+      t.integer :supplier_id
       t.integer :price
       t.integer :sale_price
 

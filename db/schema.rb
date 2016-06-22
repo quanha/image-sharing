@@ -11,13 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160621154113) do
+ActiveRecord::Schema.define(version: 20160622091145) do
 
   create_table "backend_menus", force: :cascade do |t|
     t.integer  "parent_id",     limit: 4
     t.string   "name",          limit: 255
     t.string   "icon",          limit: 255
-    t.string   "role",          limit: 255
     t.string   "url",           limit: 255
     t.string   "highlight",     limit: 255
     t.integer  "display_order", limit: 4
@@ -33,17 +32,21 @@ ActiveRecord::Schema.define(version: 20160621154113) do
   end
 
   create_table "products", force: :cascade do |t|
-    t.string   "name",        limit: 255
-    t.text     "description", limit: 65535
-    t.text     "detail",      limit: 65535
-    t.string   "code",        limit: 255
-    t.string   "image",       limit: 255
-    t.integer  "category_id", limit: 4
-    t.integer  "suppler_id",  limit: 4
-    t.integer  "price",       limit: 4
-    t.integer  "sale_price",  limit: 4
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.string   "name",               limit: 255
+    t.text     "description",        limit: 65535
+    t.text     "detail",             limit: 65535
+    t.string   "code",               limit: 255
+    t.string   "image",              limit: 255
+    t.integer  "category_id",        limit: 4
+    t.integer  "suppler_id",         limit: 4
+    t.integer  "price",              limit: 4
+    t.integer  "sale_price",         limit: 4
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+    t.string   "image_file_name",    limit: 255
+    t.string   "image_content_type", limit: 255
+    t.integer  "image_file_size",    limit: 4
+    t.datetime "image_updated_at"
   end
 
   create_table "slides", force: :cascade do |t|

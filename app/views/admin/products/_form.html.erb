@@ -1,0 +1,63 @@
+<%= form_for([:admin, @product], :html => {class: 'form-horizontal', :html => {:multipart => true}}) do |f| %>
+    <div class="form-group">
+      <label for="name" class="col-sm-2 control-label"><%= f.label 'Supplier' %></label>
+      <div class="col-sm-8">
+        <%= f.select :supplier_id, options_for_select(Supplier.all.collect{|p| [ p.name, p.id ] }, :selected => @product.supplier_id), {include_blank: 'Select Supplier'}, class: 'form-control' %>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="name" class="col-sm-2 control-label"><%= f.label 'Category' %></label>
+      <div class="col-sm-8">
+        <%= f.select :category_id, options_for_select(Category.all.map {|p| [ p.name, p.id ] }, :selected => @product.category_id), {include_blank: 'Select category'}, class: 'form-control'%>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="name" class="col-sm-2 control-label"><%= f.label :image %></label>
+      <div class="col-sm-8">
+        <%= f.file_field :image, class: 'form-control', :as => :file %>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="name" class="col-sm-2 control-label"><%= f.label :name %></label>
+      <div class="col-sm-8">
+        <%= f.text_field :name, class: 'form-control' %>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="name" class="col-sm-2 control-label"><%= f.label :code %></label>
+      <div class="col-sm-8">
+        <%= f.text_field :code, class: 'form-control' %>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="description" class="col-sm-2 control-label"><%= f.label :description %></label>
+      <div class="col-sm-8">
+        <%= f.text_area :description, class: 'form-control' %>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="description" class="col-sm-2 control-label"><%= f.label :detail %></label>
+      <div class="col-sm-8">
+        <%= f.text_area :detail, class: 'form-control' %>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="description" class="col-sm-2 control-label"><%= f.label :price %></label>
+      <div class="col-sm-8">
+        <%= f.text_area :price, class: 'form-control' %>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="description" class="col-sm-2 control-label"><%= f.label :sale_price %></label>
+      <div class="col-sm-8">
+        <%= f.text_area :sale_price, class: 'form-control' %>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-8">
+        <%= link_to 'Back', admin_suppliers_path, :class => 'btn btn-default'%>
+        <%= f.submit 'Submit', :class => "btn btn-primary"%>
+      </div>
+    </div>
+<% end %>
+
