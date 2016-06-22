@@ -41,6 +41,8 @@ gem 'enumerize'
 
 gem 'font-awesome-sass', '~> 4.6.2'
 
+gem 'ckeditor'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

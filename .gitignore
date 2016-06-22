@@ -43,4 +43,5 @@ bower.json
 
 .idea/
 
+/public/ckeditor_assets
 

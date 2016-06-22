@@ -13,4 +13,4 @@
 //= require ./admin/smartwidgets/jarvis.widget.min.js
 //= require ./admin/app.min
 //= require ./admin/fontawesome-iconpicker.min
-
+//= require ckeditor/init
