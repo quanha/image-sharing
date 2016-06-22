@@ -4,7 +4,7 @@
       <div class="col-sm-8">
         <%= select("backend_menu", "parent_id", BackendMenu.where.not(id: params[:id])
             .where('parent_id IS NULL OR parent_id = ?', 0)
-            .collect {|p| [ p.name, p.id ] }, {prompt: 'Select Parent'}, class: 'form-control') %>
+            .collect {|p| [ p.name, p.id ] }, {include_blank: 'Select Parent'}, class: 'form-control') %>
       </div>
     </div>
     <div class="form-group">
@@ -16,7 +16,7 @@
     <div class="form-group">
       <label for="description" class="col-sm-2 control-label"><%= f.label :icon %></label>
       <div class="col-sm-8">
-        <%= f.text_field :icon, class: 'form-control' %>
+        <%= f.text_field :icon, class: 'form-control icon-picker' %>
       </div>
     </div>
     <div class="form-group">
@@ -38,5 +38,12 @@
       </div>
     </div>
 <% end %>
+<script>
+  $(document).ready(function(){
+    $('.icon-picker').iconpicker({
+      placement:'bottomLeft'
+    });
+  })
+</script>
 
 
