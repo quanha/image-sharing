@@ -13,10 +13,10 @@ class AdminController < ActionController::Base
   end
 
   def set_menu
-    parents = BackendMenu.where('parent_id IS NULL OR parent_id = ?', 0)
+    parents = BackendMenu.where('parent_id IS NULL OR parent_id = ?', 0).order(:display_order)
     menus = generate_menu(parents)
     parents.each do |parent|
-      children = BackendMenu.where(parent_id: parent.id)
+      children = BackendMenu.where(parent_id: parent.id).order(:display_order)
       if children.count > 0
         menus[parent.name]['children'] = generate_menu(children)
       end

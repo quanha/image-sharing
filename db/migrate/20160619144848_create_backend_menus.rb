@@ -7,6 +7,7 @@ class CreateBackendMenus < ActiveRecord::Migration
       t.string :url
       t.string :highlight
       t.integer :display_order
+      t.integer :level
 
       t.timestamps null: false
     end

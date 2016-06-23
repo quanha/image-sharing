@@ -34,7 +34,7 @@
               <th width="14%">Actions</th>
             </tr>
             </thead>
-            <tbody id="sortable">
+            <tbody id="sortable" data-url="/admin/backend_menus/ajax_update_position">
             <% @backend_menus.each_with_index do |backend_menu| %>
                 <tr class='data' data-id="<%= backend_menu.id %>">
                   <td><%= backend_menu.name %></td>

@@ -1,21 +1,19 @@
 var idRecord = [];
-var positionRecord = [];
-$( "#sortable" ).sortable({
+var sortable = $("#sortable");
+sortable.sortable({
     helper: fixWidthHelper,
     update: function(event, ui){
-
         var i = 1;
         $('.data').each(function(){
             idRecord[i] = ($(this).data('id'));
             i++;
         });
-
         jQuery.ajax
         ({
             type: "POST",
             dataType: 'json',
-            url: '/admin/backend_menus/ajax_update_position',
-            data: 'pid='+JSON.stringify(idRecord)+'&position='+JSON.stringify(positionRecord),
+            url: sortable.attr('data-url'),
+            data: 'pid='+JSON.stringify(idRecord),
             success: function(r){}
         });
         idRecord = [];
