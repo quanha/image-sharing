@@ -2,6 +2,10 @@ class AdminController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :authenticate_user!, :authenticate_admin, :set_menu
 
+  def dashboard
+
+  end
+
   private
 
   def authenticate_admin

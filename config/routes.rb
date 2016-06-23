@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :menus
+  resources :pages
   mount Ckeditor::Engine => '/ckeditor'
   resources :slides
   devise_for :users
@@ -17,7 +19,6 @@ Rails.application.routes.draw do
   get 'about_us' => 'user/pages#about_us'
 
   namespace :admin do
-    root 'pages#dashboard'
 
     resources :users
     resources :products
@@ -25,6 +26,9 @@ Rails.application.routes.draw do
     resources :categories
     resources :backend_menus
     resources :slides
+    resources :stores
+    resources :pages
+    resources :menus
   end
 
   # Example of regular route:

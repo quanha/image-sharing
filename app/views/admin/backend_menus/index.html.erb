@@ -34,9 +34,9 @@
               <th width="14%">Actions</th>
             </tr>
             </thead>
-            <tbody>
-            <% @backend_menus.each_with_index do |backend_menu, index| %>
-                <tr>
+            <tbody id="sortable">
+            <% @backend_menus.each_with_index do |backend_menu| %>
+                <tr class='data' data-id="<%= backend_menu.id %>">
                   <td><%= backend_menu.name %></td>
                   <td><%= backend_menu.url %></td>
                   <td>
@@ -58,8 +58,42 @@
       </div>
     </div>
   </article>
-
 </div>
+<script>
+
+  $(function() {
+    var idRecord = [];
+    var positionRecord = [];
+    $( "#sortable" ).sortable({
+      helper: fixWidthHelper,
+      update: function(event, ui){
+
+        var i = 1;
+        $('.data').each(function(){
+          idRecord[i] = ($(this).data('id'));
+          i++;
+        });
+
+        jQuery.ajax
+        ({
+          type: "POST",
+          dataType: 'json',
+          url: BASE_URL + 'admin/frontend_menus/ajax_update_position',
+          data: 'pid='+JSON.stringify(idRecord)+'&position='+JSON.stringify(positionRecord),
+          success: function(r){}
+        });
+        idRecord = [];
+      }
+    }).disableSelection();
+    function fixWidthHelper(e, ui) {
+      ui.children().each(function() {
+        $(this).width($(this).width());
+      });
+      return ui;
+    }
+  });
+</script>
+
 
 
 

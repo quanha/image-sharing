@@ -1,0 +1,67 @@
+<div class="row">
+  <div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
+    <h1 class="page-title txt-color-blueDark"><i class="fa-fw fa fa-home"></i> System <span>> List of categories</span></h1>
+  </div>
+  <div class="col-xs-12 col-sm-5 col-md-5 col-lg-8">
+    <ul id="sparks" class="">
+      <li class="sparks-info">
+        <%= link_to 'Add new store', new_admin_store_path, :class => 'btn btn-primary'%>
+      </li>
+    </ul>
+  </div>
+</div>
+<div class="row">
+  <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <div class="jarviswidget jarviswidget-color-darken" id="wid-id-0" data-widget-colorbutton="false" data-widget-deletebutton="false" data-widget-editbutton="true">
+      <header>
+        <span class="widget-icon"> <i class="fa fa-table"></i> </span>
+        <h2><%= 'List of Stores' %></h2>
+      </header>
+      <div>
+        <div class="jarviswidget-editbox"></div>
+
+        <div class="widget-body">
+          <table id="datatable_fixed_column" class="table table-striped table-bordered" width="100%">
+            <thead>
+            <tr>
+              <th class="hasinput"><input type="text" class="form-control" placeholder="Filter name" /></th>
+              <th class="hasinput"><input type="text" class="form-control" placeholder="Filter address" /></th>
+              <th class="hasinput"><input type="text" class="form-control" placeholder="Filter working time" /></th>
+              <th class="hasinput" ></th>
+            </tr>
+            <tr>
+              <th width="10%">Name</th>
+              <th>Address</th>
+              <th>Working time</th>
+              <th width="14%">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <% @stores.each_with_index do |store| %>
+                <tr>
+                  <td><%= store.name %></td>
+                  <td><%= store.address %></td>
+                  <td><%= store.working_time %></td>
+                  <td>
+                    <center>
+                      <%= link_to(edit_admin_store_path(store), 'escape' => false, 'class' => 'btn btn-sm btn-default') do%>
+                          <i class="fa fa-edit" title="Edit"></i>
+                      <% end %>
+                      <%= link_to(admin_store_path(store), data: { confirm: 'Are you sure?' }, 'class' => 'btn btn-sm btn-default deleteLin', method: :delete) do %>
+                          <i class="fa fa-trash-o" title="Delete"></i>
+                      <% end %>
+                    </center>
+                  </td>
+                </tr>
+            <% end %>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </div>
+  </article>
+</div>
+
+
+
