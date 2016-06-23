@@ -43,6 +43,12 @@ class Admin::BackendMenusController < AdminController
     end
   end
 
+  def ajax_update_position
+    respond_to do |format|
+      format.json{ render :status => true}
+    end
+  end
+
   private
     def set_backend_menu
       @backend_menu = BackendMenu.find(params[:id])
