@@ -1,1 +1,11 @@
-
+<tr>
+  <td><%= product_quantity.text_field :size, class: 'form-control' %></td>
+  <td><%= product_quantity.text_field :quantity, class: 'form-control' %></td>
+  <td><%= product_quantity.text_field :store_id, class: 'form-control' %></td>
+  <td>
+    <%= product_quantity.hidden_field :_destroy, class: 'form-control' %>
+    <%= link_to('#/', 'escape' => false, 'class' => 'btn btn-sm btn-default remove_product_quantity') do%>
+        <i class="fa fa-trash-o" title="Delete"></i>
+    <% end %>
+  </td>
+</tr>

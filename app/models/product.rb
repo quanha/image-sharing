@@ -2,7 +2,8 @@ class Product < ActiveRecord::Base
   has_many :product_categories
   has_many :categories, through: :product_categories
   has_many :product_quantities, dependent: :destroy
-  accepts_nested_attributes_for :product_quantities
+  accepts_nested_attributes_for :product_quantities, allow_destroy: true,
+                                reject_if: proc { |p| p['quantity'].blank? || p['size'].blank? || p['store_id'].blank?}
 
   validates :name, :presence => true
   validates :description, :presence => true
