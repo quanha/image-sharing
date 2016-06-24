@@ -11,18 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160623082600) do
+ActiveRecord::Schema.define(version: 20160624042713) do
 
   create_table "backend_menus", force: :cascade do |t|
     t.integer  "parent_id",     limit: 4
     t.string   "name",          limit: 255
     t.string   "icon",          limit: 255
-    t.string   "role",          limit: 255
     t.string   "url",           limit: 255
     t.string   "highlight",     limit: 255
     t.integer  "display_order", limit: 4
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
+    t.integer  "level",         limit: 4,   null: false
   end
 
   create_table "categories", force: :cascade do |t|
@@ -63,12 +63,27 @@ ActiveRecord::Schema.define(version: 20160623082600) do
     t.datetime "updated_at",               null: false
   end
 
+  create_table "product_categories", force: :cascade do |t|
+    t.integer  "product_id",  limit: 4
+    t.integer  "category_id", limit: 4
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+  end
+
+  create_table "product_quantities", force: :cascade do |t|
+    t.integer  "product_id", limit: 4
+    t.integer  "size",       limit: 4
+    t.integer  "quantity",   limit: 4
+    t.integer  "store_id",   limit: 4
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
   create_table "products", force: :cascade do |t|
     t.string   "name",               limit: 255
     t.text     "description",        limit: 65535
     t.text     "detail",             limit: 65535
     t.string   "code",               limit: 255
-    t.string   "image",              limit: 255
     t.integer  "category_id",        limit: 4
     t.integer  "supplier_id",        limit: 4
     t.integer  "price",              limit: 4
@@ -112,6 +127,7 @@ ActiveRecord::Schema.define(version: 20160623082600) do
     t.string   "encrypted_password",     limit: 255, default: "", null: false
     t.string   "first_name",             limit: 255
     t.string   "last_name",              limit: 255
+    t.string   "image",                  limit: 255
     t.string   "role",                   limit: 255, default: "", null: false
     t.string   "reset_password_token",   limit: 255
     t.datetime "reset_password_sent_at"

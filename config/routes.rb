@@ -18,9 +18,8 @@ Rails.application.routes.draw do
   get 'contact' => 'user/pages#contact'
   get 'about_us' => 'user/pages#about_us'
 
-  post 'admin/backend_menus/ajax_update_position' => 'admin/backend_menus/ajax_update_position'
-
   namespace :admin do
+    post '/backend_menus/ajax_update_position' => 'backend_menus#ajax_update_position'
 
     resources :users
     resources :products

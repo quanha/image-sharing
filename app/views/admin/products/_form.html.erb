@@ -8,7 +8,7 @@
     <div class="form-group">
       <label for="name" class="col-sm-2 control-label"><%= f.label 'Category' %></label>
       <div class="col-sm-8">
-        <%= f.select :category_id, options_for_select(Category.all.map {|p| [ p.name, p.id ] }, :selected => @product.category_id), {include_blank: 'Select category'}, class: 'form-control'%>
+        <%= f.select :category_ids, options_for_select(Category.all.map {|p| [ p.name, p.id ] }, :selected => @product.category_ids), {include_blank: 'Select category'}, class: 'form-control', :multiple => true, 'style' =>'height:150px' %>
       </div>
     </div>
     <div class="form-group">
@@ -51,6 +51,28 @@
       <label for="description" class="col-sm-2 control-label"><%= f.label :sale_price %></label>
       <div class="col-sm-8">
         <%= f.text_area :sale_price, class: 'form-control' %>
+      </div>
+    </div>
+    <%= @product.product_quantities %>
+    <div class="form-group">
+      <label for="description" class="col-sm-2 control-label"><%= 'Quantity' %></label>
+      <div class="col-sm-8">
+        <table class="table">
+          <tr>
+            <th>Size</th>
+            <th>Quantity</th>
+            <th>Store</th>
+            <th>Action</th>
+          </tr>
+          <% f.fields_for :product_quantities, @product.product_quantities do |product_quantity| %>
+          <tr>
+            <td><%= product_quantity.text_field :size, class: 'form-control' %></td>
+            <td><%= product_quantity.text_field :quantity, class: 'form-control' %></td>
+            <td><%= product_quantity.text_field :store_id, class: 'form-control' %></td>
+            <td><%= link_to 'Delete', '#', :class => 'btn btn-default'%></td>
+          </tr>
+          <% end %>
+        </table>
       </div>
     </div>
     <div class="form-group">

@@ -25,7 +25,7 @@
   <!-- END RIBBON -->
 
   <div id="content">
-    <%= render('shared/message') %>
+    <%= render('shared/admin/message') %>
     <%= yield %>
   </div>
 
@@ -40,6 +40,6 @@
 <%= render('layouts/admin/shortcut') %>
 <!-- END SHORTCUT AREA -->
 
-<%= javascript_include_tag 'admin', 'data-turbolinks-track' => true %>
+<%= javascript_include_tag 'admin', 'data-turbolinks-track' => false %>
 </body>
 </html>

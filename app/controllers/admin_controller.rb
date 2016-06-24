@@ -1,6 +1,6 @@
 class AdminController < ActionController::Base
   protect_from_forgery with: :exception
-  before_action :authenticate_user!, :authenticate_admin, :set_menu
+  before_action :authenticate_user!, :authenticate_admin, :set_left_menus
 
   def dashboard
 
@@ -12,7 +12,7 @@ class AdminController < ActionController::Base
     redirect_to '/' if !user_signed_in? || current_user.role.user?
   end
 
-  def set_menu
+  def set_left_menus
     parents = BackendMenu.where('parent_id IS NULL OR parent_id = ?', 0).order(:display_order)
     menus = generate_menu(parents)
     parents.each do |parent|
