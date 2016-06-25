@@ -56,31 +56,19 @@
     <div class="form-group">
       <label for="description" class="col-sm-2 control-label"><%= 'Quantity' %></label>
       <div class="col-sm-8">
-        <table class="table">
+        <table class="table product_quantity_table">
           <tr>
             <th>Size</th>
             <th>Quantity</th>
             <th>Store</th>
             <th>Action</th>
           </tr>
-          <%= f.fields_for :product_quantities do |product_quantity|  %>
-          <tr>
-            <td><%= product_quantity.text_field :size, class: 'form-control' %></td>
-            <td><%= product_quantity.text_field :quantity, class: 'form-control' %></td>
-            <td><%= product_quantity.text_field :store_id, class: 'form-control' %></td>
-            <td>
-              <%= product_quantity.hidden_field :_destroy, class: 'form-control' %>
-              <%= link_to('#/', 'escape' => false, 'class' => 'btn btn-sm btn-default remove_product_quantity') do%>
-                  <i class="fa fa-trash-o" title="Delete"></i>
-              <% end %>
-            </td>
-          </tr>
+          <%= f.fields_for :product_quantities do |builder| %>
+            <%= render('shared/admin/product_quantity', f: builder)%>
           <% end %>
         </table>
         <div style="float: right">
-          <%= link_to('#/', 'escape' => false, 'class' => 'btn btn-sm btn-success remove_product_quantity') do %>
-              Add more
-          <% end %>
+          <%= link_to_add_fields 'Add more', f, :product_quantities %>
         </div>
       </div>
     </div>
