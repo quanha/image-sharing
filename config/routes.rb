@@ -20,6 +20,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     post '/backend_menus/ajax_update_position' => 'backend_menus#ajax_update_position'
+    post '/products/delete_image' => 'products#delete_image'
 
     resources :users
     resources :products

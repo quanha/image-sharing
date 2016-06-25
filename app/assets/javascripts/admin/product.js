@@ -12,6 +12,18 @@ $('.add_product_quantity').on('click', function(){
     remove_product();
 })
 
+$('.deleteImageProduct').bind('click', function(e){
+    $.ajax
+    ({
+        type: "POST",
+        dataType: 'json',
+        url: '/admin/products/delete_image',
+        data: 'id='+$(this).attr('data')
+    });
+    $(this).closest('.show-image').remove();
+    e.preventDefault();
+})
+
 $(document).ready(function(){
     remove_product()
 })

@@ -19,9 +19,13 @@ class Admin::ProductsController < AdminController
 
   def create
     @product = Product.new(product_params)
-
     respond_to do |format|
       if @product.save
+        if params[:images]
+          params[:images].each { |image|
+            @product.pictures.create(image: image)
+          }
+        end
         flash[:success] = "Product was successfully created."
         format.html { redirect_to admin_products_path }
       else
@@ -34,6 +38,11 @@ class Admin::ProductsController < AdminController
   def update
     respond_to do |format|
       if @product.update(product_params)
+        if params[:images]
+          params[:images].each { |image|
+            @product.pictures.create(image: image)
+          }
+        end
         flash[:success] = "Product was successfully updated."
         format.html { redirect_to admin_products_path }
       else
@@ -49,6 +58,11 @@ class Admin::ProductsController < AdminController
       flash[:success] = "Product was successfully destroyed."
       format.html { redirect_to admin_products_path }
     end
+  end
+
+  def delete_image
+    Picture.find(params[:id]).destroy
+    render json: {status: true}
   end
 
   private

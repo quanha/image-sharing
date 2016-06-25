@@ -2,4 +2,4 @@
 //= require admin/datatable_initialize
 //= require admin/dragsort_initialize
 //= require admin/dragsort_initialize
-//= require admin/remove_field
+//= require admin/product

@@ -56,7 +56,7 @@
     <div class="form-group">
       <label for="description" class="col-sm-2 control-label"><%= 'Quantity' %></label>
       <div class="col-sm-8">
-        <table class="table product_quantity_table">
+        <table class="table table-bordered product_quantity_table">
           <tr>
             <th>Size</th>
             <th>Quantity</th>
@@ -73,10 +73,31 @@
       </div>
     </div>
     <div class="form-group">
+     <div class="col-sm-8 col-sm-offset-2" style="display: block">
+       <% @product.pictures.each do |picture| %>
+           <div class="show-image">
+             <%= image_tag(picture.image.url(:medium))%>
+             <%= link_to('#', 'class' => 'btn btn-sm btn-default deleteImageProduct', :data => picture.id) do %>
+                 <i class="fa fa-trash-o" title="Delete"></i>
+             <% end %>
+           </div>
+       <% end %>
+     </div>
+    </div>
+    <div class="form-group">
+      <label for="description" class="col-sm-2 control-label"><%= f.label :pictures %></label>
+      <div class="col-sm-8">
+        <%= file_field_tag 'images[]', type: :file, multiple: true, :class => 'form-control' %>
+      </div>
+    </div>
+    <div class="form-group">
       <div class="col-sm-offset-2 col-sm-8">
         <%= link_to 'Back', admin_products_path, :class => 'btn btn-default'%>
         <%= f.submit 'Submit', :class => "btn btn-primary"%>
       </div>
     </div>
 <% end %>
+<style>
+
+</style>
 
