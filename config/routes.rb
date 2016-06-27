@@ -1,8 +1,5 @@
 Rails.application.routes.draw do
-  resources :menus
-  resources :pages
   mount Ckeditor::Engine => '/ckeditor'
-  resources :slides
   devise_for :users
 
   # The priority is based upon order of creation: first created -> highest priority.
@@ -20,6 +17,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     post '/backend_menus/ajax_update_position' => 'backend_menus#ajax_update_position'
+    post '/menus/ajax_update_position' => 'menus#ajax_update_position'
     post '/products/delete_image' => 'products#delete_image'
 
     resources :users

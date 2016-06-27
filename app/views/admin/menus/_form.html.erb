@@ -1,3 +1,17 @@
+<%
+   unless @menu.new_record?
+     url_code = @menu.url_code
+     var = url_code.partition('=').last
+     if url_code.start_with?('page=')
+       page = var
+     elsif url_code.start_with?('category=')
+       category = var
+     else
+       link = var
+     end
+   end
+%>
+
 <%= form_for([:admin, @menu], :html => {class: 'form-horizontal'}) do |f| %>
     <div class="form-group">
       <label for="name" class="col-sm-2 control-label"><%= f.label :name %></label>
@@ -6,11 +20,31 @@
       </div>
     </div>
     <div class="form-group">
-      <label for="description" class="col-sm-2 control-label"><%= f.label :content %></label>
+      <label for="description" class="col-sm-2 control-label"><%= f.label 'Menu' %></label>
       <div class="col-sm-8">
-        <%= f.cktext_area :content, class: 'form-control' %>
+        <hr style="border: 0.1px solid; opacity: 0.5;">
       </div>
     </div>
+
+    <div class="form-group">
+      <label for="description" class="col-sm-2 control-label"><%= f.label 'Category' %></label>
+      <div class="col-sm-8">
+        <%= select_tag :category, options_for_select(Category.all.collect{ |p| [p.name, p.id] }, :selected => category), :include_blank => 'Select category', class: 'form-control' %>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="description" class="col-sm-2 control-label"><%= f.label 'Page' %></label>
+      <div class="col-sm-8">
+        <%= select_tag :page, options_for_select(Page.all.collect{ |p| [p.name, p.id] }, :selected => page), :include_blank => 'Select page', class: 'form-control' %>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="description" class="col-sm-2 control-label"><%= f.label 'Link' %></label>
+      <div class="col-sm-8">
+        <%= text_field_tag :link, link, class: 'form-control' %>
+      </div>
+    </div>
+    <%= f.hidden_field :url_code, class: 'form-control' %>
     <div class="form-group">
       <div class="col-sm-offset-2 col-sm-8">
         <%= link_to 'Back', admin_menus_path, :class => 'btn btn-default'%>
@@ -18,4 +52,37 @@
       </div>
     </div>
 <% end %>
+<script>
+  $(document).ready(function(){
+    $("#category").change(function(){
+          $('#page').prop('selectedIndex', 0);
+          $("#link").val('');
+          if($("#category option:selected").val() != ''){
+            $("#menu_url_code").val('category=' + $("#category option:selected").val());
+          } else {
+            $("#menu_url_code").val('')
+          }
+        }
+    )
+    $("#page").change(function(){
+          $('#category').prop('selectedIndex', 0);
+          $("#link").val('');
+          if($("#page option:selected").val() != ''){
+            $("#menu_url_code").val('page=' + $("#page option:selected").val());
+          } else {
+            $("#menu_url_code").val('')
+          }
+        }
+    )
+    $("#link").keyup(function(){
+      $('#page').prop('selectedIndex', 0);
+      $('#category').prop('selectedIndex', 0);
+      if($('#link').val() != ''){
+        $('#menu_url_code').val('link='+$('#link').val());
+      } else {
+        $('#menu_url_code').val('')
+      }
+    })
+  })
+</script>
 

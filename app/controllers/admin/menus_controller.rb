@@ -2,7 +2,7 @@ class Admin::MenusController < AdminController
   before_action :set_menu, only: [:show, :edit, :update, :destroy]
 
   def index
-    @menus = Menu.all
+    @menus = Menu.all.order(:display_order)
   end
 
   def show
@@ -21,7 +21,7 @@ class Admin::MenusController < AdminController
     respond_to do |format|
       if @menu.save
         flash[:success] = 'Menu was successfully created.'
-        format.html { redirect_to @menu }
+        format.html { redirect_to admin_menus_path }
       else
         flash.now[:danger] = @menu.errors.full_messages
         format.html { render :new }
@@ -33,7 +33,7 @@ class Admin::MenusController < AdminController
     respond_to do |format|
       if @menu.update(menu_params)
         flash[:success] = 'Menu was successfully updated.'
-        format.html { redirect_to @menu }
+        format.html { redirect_to admin_menus_path }
       else
         flash.now[:danger] = @menu.errors.full_messages
         format.html { render :edit }
@@ -41,11 +41,23 @@ class Admin::MenusController < AdminController
     end
   end
 
+  def ajax_update_position
+    id_data = ActiveSupport::JSON.decode(params[:pid]).drop(1)
+    id_data.each_with_index do |item , index|
+      row = Menu.find(item)
+      row.display_order = index
+      row.save
+    end
+    respond_to do |format|
+      format.json{ render json: id_data}
+    end
+  end
+
   def destroy
     @menu.destroy
     respond_to do |format|
       flash[:success] = 'Menu was successfully destroyed.'
-      format.html { redirect_to menus_url }
+      format.html { redirect_to admin_menus_path }
     end
   end
 
