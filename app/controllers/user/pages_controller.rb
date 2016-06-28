@@ -1,5 +1,6 @@
 class User::PagesController < UserController
   def index
+    @slides = Slide.all
   end
 
   def collections

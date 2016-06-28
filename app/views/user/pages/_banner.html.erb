@@ -25,31 +25,21 @@
       </script>
       <!----//End-slider-script---->
       <!-- Slideshow 4 -->
+      <% if @slides.present? %>
       <div  id="top" class="callbacks_container">
         <ul class="rslides" id="slider4">
+          <% @slides.each do |slide| %>
           <li>
-            <%= image_tag('slide1.jpg', :class => 'img-responsive') %>
+            <%= image_tag(slide.image.url, :class => 'img-responsive banner-image') %>
             <div class="slider-caption">
-              <h1>Beautiful & durable</h1>
-              <p>Classically simple and beautifully elegant Hard wearing leather shoes and hand-made with heart </p>
+              <h1><%= slide.name %></h1>
+              <p><%= slide.description %></p>
             </div>
           </li>
-          <li>
-            <%= image_tag('slide1.jpg') %>
-            <div class="slider-caption">
-              <h1>Beautiful & durable</h1>
-              <p>Classically simple and beautifully elegant Hard wearing leather shoes and hand-made with heart </p>
-            </div>
-          </li>
-          <li>
-            <%= image_tag('slide1.jpg') %>
-            <div class="slider-caption">
-              <h1>Beautiful & durable</h1>
-              <p>Classically simple and beautifully elegant Hard wearing leather shoes and hand-made with heart </p>
-            </div>
-          </li>
+          <% end %>
         </ul>
       </div>
+      <% end %>
       <div class="clearfix"> </div>
     </div>
     <!-- slider -->
