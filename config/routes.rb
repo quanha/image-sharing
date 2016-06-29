@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   mount Ckeditor::Engine => '/ckeditor'
   devise_for :users
 
@@ -29,6 +30,7 @@ Rails.application.routes.draw do
     resources :stores
     resources :pages
     resources :menus
+    resources :product_types
   end
 
   # Example of regular route:

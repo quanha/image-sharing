@@ -1,0 +1,27 @@
+<%= form_for([:admin, @product_type], :html => {class: 'form-horizontal', :html => {:multipart => true}}) do |f| %>
+    <div class="form-group">
+      <label for="name" class="col-sm-2 control-label"><%= f.label :name %></label>
+      <div class="col-sm-8">
+        <%= f.text_field :name, class: 'form-control' %>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="description" class="col-sm-2 control-label"><%= f.label :description %></label>
+      <div class="col-sm-8">
+        <%= f.text_area :description, class: 'form-control' %>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="image" class="col-sm-2 control-label"><%= f.label :image %></label>
+      <div class="col-sm-8">
+        <%= f.file_field :image, class: 'form-control', as: :file  %>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-8">
+        <%= link_to 'Back', admin_slides_path, :class => 'btn btn-default'%>
+        <%= f.submit 'Submit', :class => "btn btn-primary"%>
+      </div>
+    </div>
+<% end %>
+

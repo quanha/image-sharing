@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160625041921) do
+ActiveRecord::Schema.define(version: 20160629012846) do
 
   create_table "backend_menus", force: :cascade do |t|
     t.integer  "parent_id",     limit: 4
@@ -64,7 +64,6 @@ ActiveRecord::Schema.define(version: 20160625041921) do
   end
 
   create_table "pictures", force: :cascade do |t|
-    t.string   "image",              limit: 255
     t.datetime "created_at",                     null: false
     t.datetime "updated_at",                     null: false
     t.string   "image_file_name",    limit: 255
@@ -90,6 +89,17 @@ ActiveRecord::Schema.define(version: 20160625041921) do
     t.datetime "updated_at",           null: false
   end
 
+  create_table "product_types", force: :cascade do |t|
+    t.string   "name",               limit: 255
+    t.text     "description",        limit: 65535
+    t.string   "image_file_name",    limit: 255
+    t.string   "image_content_type", limit: 255
+    t.integer  "image_file_size",    limit: 4
+    t.datetime "image_updated_at"
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+  end
+
   create_table "products", force: :cascade do |t|
     t.string   "name",               limit: 255
     t.text     "description",        limit: 65535
@@ -105,6 +115,7 @@ ActiveRecord::Schema.define(version: 20160625041921) do
     t.string   "image_content_type", limit: 255
     t.integer  "image_file_size",    limit: 4
     t.datetime "image_updated_at"
+    t.integer  "product_type_id",    limit: 4
   end
 
   create_table "slides", force: :cascade do |t|
