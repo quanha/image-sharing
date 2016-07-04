@@ -7,8 +7,11 @@ class PagesController < ActionController::Base
     @slides = Slide.all
   end
 
-  def collection category_id, product_type_id
-    @products = Product.joins('INNER JOIN product_categories ON product.id = product_categories.product_id').where()
+  def collections
+    product_type_query = (params[:product_type_id].to_i != 0) ? "products.product_type_id = #{params[:product_type_id]}" : nil
+    @category = Category.find(params[:category_id])
+    @products = Product.joins(:product_categories).where(product_categories: {category_id: params[:category_id]}).where(product_type_query)
+    @product_types = ProductType.joins(products: :product_categories).where(product_categories: {category_id: params[:category_id]})
   end
 
   def new_arrivals

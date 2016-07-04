@@ -1,4 +1,6 @@
 class ProductType < ActiveRecord::Base
+    has_many :products
+
     validates :name, presence: true
     validates :description, presence: true
 

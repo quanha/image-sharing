@@ -54,6 +54,6 @@ class Admin::CategoriesController < AdminController
     end
 
     def category_params
-      params.require(:category).permit(:name, :description)
+      params.require(:category).permit(:name, :description, :at_homepage)
     end
 end

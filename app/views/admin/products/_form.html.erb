@@ -12,7 +12,7 @@
       </div>
     </div>
     <div class="form-group">
-      <label for="name" class="col-sm-2 control-label"><%= f.label 'Category' %></label>
+      <label for="name" class="col-sm-2 control-label"><%= f.label 'Product type' %></label>
       <div class="col-sm-8">
         <%= f.select :product_type_id, options_for_select(ProductType.all.map {|p| [ p.name, p.id ] }, :selected => @product.product_type_id), {include_blank: 'Select Product Type'}, class: 'form-control' %>
       </div>
@@ -50,13 +50,13 @@
     <div class="form-group">
       <label for="description" class="col-sm-2 control-label"><%= f.label :price %></label>
       <div class="col-sm-8">
-        <%= f.text_area :price, class: 'form-control' %>
+        <%= f.text_field :price, class: 'form-control' %>
       </div>
     </div>
     <div class="form-group">
       <label for="description" class="col-sm-2 control-label"><%= f.label :sale_price %></label>
       <div class="col-sm-8">
-        <%= f.text_area :sale_price, class: 'form-control' %>
+        <%= f.text_field :sale_price, class: 'form-control' %>
       </div>
     </div>
     <div class="form-group">

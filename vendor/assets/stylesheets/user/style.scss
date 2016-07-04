@@ -423,6 +423,8 @@ span.menu{
 }
 .product-pic-info-cart{
 	float:right;
+	margin-right: 6px;
+	margin-top: 5px;
 }
 a.p-btn{
 	background:#8b4613;
@@ -1967,3 +1969,35 @@ ul.prosuct-qty{
   opacity: 0.3;
 }
 
+li.item-product{
+	width: 30%;
+	display: inline-block;
+	margin-right: 20px;
+	margin-bottom: 30px;
+}
+
+ul.products{
+	margin-left: -60px;
+}
+
+.product-pic{
+	width: 252px;
+	height: 100%;
+}
+
+.product-types{
+  margin-bottom: 20px;
+}
+
+li.item-category{
+  display: block;
+}
+
+li.item-category.active{
+  font-weight: bold;
+}
+
+ul.ul-category{
+  margin-left: -40px;
+  margin-top: 12px;
+}
