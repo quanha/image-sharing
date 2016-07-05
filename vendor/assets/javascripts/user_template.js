@@ -1,4 +1,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= require_directory ./user
+//= require ./user/easyResponsiveTabs.js
+//= require ./user/owl.carousel.js
+//= require ./user/responsiveslides.min.js
+//= require ./user/jquery.etalage.min.js

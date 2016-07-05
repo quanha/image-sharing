@@ -11,4 +11,17 @@ module ApplicationHelper
     end
     link_to(name, '#/', class: 'btn btn-sm btn-success add_product_quantity', data: {id: id, fields: fields.gsub('\n', '')})
   end
+
+  def get_menu_url(url_code)
+    link_type = url_code.partition('=').first
+    code = url_code.partition('=').last
+    case link_type
+      when 'category'
+        collections_path(code, 0)
+      when 'page'
+
+      else
+        url_code
+    end
+  end
 end

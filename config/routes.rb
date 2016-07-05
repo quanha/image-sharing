@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   get 'accessories' => 'pages#accessories'
   get 'contact' => 'pages#contact'
   get 'about_us' => 'pages#about_us'
-
+  get 'product/:id' => 'pages#product', as: :product
   get 'collections/:category_id/:product_type_id' => 'pages#collections', :as => :collections
 
   namespace :admin do

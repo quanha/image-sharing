@@ -3,10 +3,11 @@
     <span class="menu"> </span>
     <ul>
       <li class="<%= action_name == 'index' ? 'active' : '' %>"><%= link_to 'Home', '/' %></li>
-      <li class="<%= action_name == 'collections' ? 'active' : '' %>"><%= link_to 'Collection', collections_url %></li>
-      <li class="<%= action_name == 'new_arrivals' ? 'active' : '' %>"><%= link_to 'New Arrivals', new_arrivals_url %></li>
-      <li class="<%= action_name == 'sales' ? 'active' : '' %>"><%= link_to 'Sale', sales_url %></li>
-      <li class="<%= action_name == 'accessories' ? 'active' : '' %>"><%= link_to 'Accessories', accessories_url %></li>
+      <% if @nav_menus.present? %>
+        <% @nav_menus.each do |item|%>
+          <li class="<%= request.original_fullpath == get_menu_url(item.url_code) ? 'active' : '' %>" ><%= link_to item.name, get_menu_url(item.url_code)%></li>
+        <% end %>
+      <% end %>
       <li class="<%= action_name == 'about_us' ? 'active' : '' %>" ><%= link_to 'About Us', about_us_url%></li>
       <li class="<%= action_name == 'contact' ? 'active' : '' %>"><%= link_to 'Contact Us', contact_url %></li>
       <div class="clearfix"> </div>

@@ -1,0 +1,101 @@
+<div class="details-page">
+  <div class="content details-page">
+    <!---start-product-details--->
+    <div class="product-details">
+      <div class="container">
+        <ul class="product-head">
+          <li><a href="<%= root_path %>">Home</a> <span>></span></li>
+          <li class="<% %>">Product Page</li>
+          <div class="clearfix"> </div>
+        </ul>
+        <script>
+          jQuery(document).ready(function($){
+            $('#etalage').etalage({
+              thumb_image_width: 300,
+              thumb_image_height: 400,
+              source_image_width: 900,
+              source_image_height: 1000,
+              show_hint: true,
+              click_callback: function(image_anchor, instance_id){
+                alert('Callback example:\nYou clicked on an image with the anchor: "'+image_anchor+'"\n(in Etalage instance: "'+instance_id+'")');
+              }
+            });
+            // This is for the dropdown list example:
+            $('.dropdownlist').change(function(){
+              etalage_show( $(this).find('option:selected').attr('class') );
+            });
+          });
+        </script>
+        <div class="details-left">
+          <div class="details-left-slider">
+            <ul id="etalage" class="etalage" style="display: block; width: 314px; height: 552px;">
+              <% @product.pictures.each do |picture| %>
+              <li class="etalage_thumb thumb_7" style="display: none; opacity: 0; background-image: none;">
+                <img class="etalage_thumb_image" src="<%= picture.image.url(:medium) %>" style="display: inline; width: 300px; height: 400px; opacity: 1;">
+                <img class="etalage_source_image" src="<%= picture.image %>">
+              </li>
+              <% end %>
+            </ul>
+          </div>
+          <div class="details-left-info">
+            <div class="details-right-head">
+              <h1>Product Name Goes Here</h1>
+              <ul class="pro-rate">
+                <li><a href="#">0 Review(s) Add Review</a></li>
+              </ul>
+              <p class="product-detail-info">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+              <a class="learn-more" href="#"><h3>MORE DETAILS</h3></a>
+              <div class="product-more-details">
+                <ul class="price-avl">
+                  <li class="price"><span>$153.39</span><label>$145.72</label></li>
+                  <li class="stock"><i>In stock</i></li>
+                  <div class="clearfix"> </div>
+                </ul>
+                <ul class="product-colors">
+                  <h3>available Colors ::</h3>
+                  <li><a class="color1" href="#"><span> </span></a></li>
+                  <li><a class="color2" href="#"><span> </span></a></li>
+                  <li><a class="color3" href="#"><span> </span></a></li>
+                  <li><a class="color4" href="#"><span> </span></a></li>
+                  <li><a class="color5" href="#"><span> </span></a></li>
+                  <li><a class="color6" href="#"><span> </span></a></li>
+                  <li><a class="color7" href="#"><span> </span></a></li>
+                  <li><a class="color8" href="#"><span> </span></a></li>
+                  <div class="clearfix"> </div>
+                </ul>
+                <ul class="prosuct-qty">
+                  <span>Quantity:</span>
+                  <select>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    <option>6</option>
+                  </select>
+                </ul>
+                <input type="button" value="add to cart">
+                <ul class="product-share">
+                  <h3>All so Share On</h3>
+                  <ul>
+                    <li><a class="share-face" href="#"><span> </span> </a></li>
+                    <li><a class="share-twitter" href="#"><span> </span> </a></li>
+                    <li><a class="share-google" href="#"><span> </span> </a></li>
+                    <li><a class="share-rss" href="#"><span> </span> </a></li>
+                    <div class="clearfix"> </div>
+                  </ul>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="clearfix"> </div>
+        </div>
+        <div class="details-right">
+
+        </div>
+        <div class="clearfix"> </div>
+      </div>
+      <!---//End-product-details--->
+    </div>
+  </div>
+</div>

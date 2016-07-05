@@ -41,7 +41,7 @@
   <div class="container">
     <div class="col-md-9 bottom-grids-left">
       <div class="f-products">
-        <h2>Featured Products</h2>
+        <h2><%= @featured_categories.first.name %></h2>
         <!----sreen-gallery-cursual---->
         <div class="sreen-gallery-cursual">
           <!-- requried-jsfiles-for owl -->
@@ -53,115 +53,40 @@
                 autoPlay : true,
                 navigation : true,
                 navigationText :  false,
-                pagination : false,
+                pagination : false
               });
             });
           </script>
           <!-- //requried-jsfiles-for owl -->
           <!-- start content_slider -->
           <div id="owl-demo" class="owl-carousel text-center">
-            <div class="item">
-              <div onclick="location.href='single-page.html';" class="product-grid">
-                <div class="product-pic">
-                  <%= image_tag('p1.jpg')%>
-                </div>
-                <div class="product-pic-info">
-                  <h3><a href="#">Elliot Boots</a></h3>
-                  <div class="product-pic-info-price-cart">
-                    <div class="product-pic-info-price">
-                      <span>$129</span>
+            <% @featured_categories.first.products.each do |product|%>
+              <div class="item">
+                <div onclick="location.href='<%= product_path(product.id) %>';" class="product-grid">
+                  <div class="product-pic-2" style="width:245px">
+                    <%= image_tag(product.image.url(:medium))%>
+                  </div>
+                  <div class="product-pic-info">
+                    <h3><a href="#"><%= product.name %></a></h3>
+                    <div class="product-pic-info-price-cart">
+                      <div class="product-pic-info-price">
+                        <span>$<%= product.price %></span>
+                      </div>
+                      <div class="product-pic-info-cart">
+                        <a class="p-btn" href="#">Add to cart</a>
+                      </div>
+                      <div class="clearfix"> </div>
                     </div>
-                    <div class="product-pic-info-cart">
-                      <a class="p-btn" href="#">Buy now</a>
-                    </div>
-                    <div class="clearfix"> </div>
                   </div>
                 </div>
               </div>
-            </div>
-            <div class="item">
-              <div onclick="location.href='single-page.html';" class="product-grid">
-                <div class="product-pic">
-                  <%= image_tag('p2.jpg')%>
-                </div>
-                <div class="product-pic-info">
-                  <h3><a href="#">Elliot Boots</a></h3>
-                  <div class="product-pic-info-price-cart">
-                    <div class="product-pic-info-price">
-                      <span>$89</span>
-                    </div>
-                    <div class="product-pic-info-cart">
-                      <a class="p-btn" href="#">Buy now</a>
-                    </div>
-                    <div class="clearfix"> </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="item">
-              <div onclick="location.href='single-page.html';" class="product-grid">
-                <div class="product-pic">
-                  <%= image_tag('p3.jpg')%>
-                </div>
-                <div class="product-pic-info">
-                  <h3><a href="#">Elliot Boots</a></h3>
-                  <div class="product-pic-info-price-cart">
-                    <div class="product-pic-info-price">
-                      <span>$149</span>
-                    </div>
-                    <div class="product-pic-info-cart">
-                      <a class="p-btn" href="#">Buy now</a>
-                    </div>
-                    <div class="clearfix"> </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="item">
-              <div onclick="location.href='single-page.html';" class="product-grid">
-                <div class="product-pic">
-                  <%= image_tag('p1.jpg')%>
-                </div>
-                <div class="product-pic-info">
-                  <h3><a href="#">Elliot Boots</a></h3>
-                  <div class="product-pic-info-price-cart">
-                    <div class="product-pic-info-price">
-                      <span>$129</span>
-                    </div>
-                    <div class="product-pic-info-cart">
-                      <a class="p-btn" href="#">Buy now</a>
-                    </div>
-                    <div class="clearfix"> </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="item">
-              <div onclick="location.href='single-page.html';" class="product-grid">
-                <div class="product-pic">
-                  <%= image_tag('p3.jpg')%>
-                </div>
-                <div class="product-pic-info">
-                  <h3><a href="#">Elliot Boots</a></h3>
-                  <div class="product-pic-info-price-cart">
-                    <div class="product-pic-info-price">
-                      <span>$129</span>
-                    </div>
-                    <div class="product-pic-info-cart">
-                      <a class="p-btn" href="#">Buy now</a>
-                    </div>
-                    <div class="clearfix"> </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <% end %>
           </div>
           <!--//sreen-gallery-cursual---->
-
         </div>
       </div>
       <div class="d-products f-products">
-        <h2>Discounts</h2>
+        <h2><%= @featured_categories.last.name %></h2>
         <!----sreen-gallery-cursual---->
         <div class="sreen-gallery-cursual">
           <!-- requried-jsfiles-for owl -->
@@ -173,116 +98,35 @@
                 autoPlay : true,
                 navigation : true,
                 navigationText :  false,
-                pagination : false,
+                pagination : false
               });
             });
           </script>
           <!-- //requried-jsfiles-for owl -->
           <!-- start content_slider -->
           <div id="owl-demo1" class="owl-carousel text-center">
-            <div class="item">
-              <div onclick="location.href='single-page.html';" class="product-grid">
-                <div class="product-pic">
-                  <%= image_tag('p4.jpg')%>
-                </div>
-                <div class="product-pic-info">
-                  <h3><a href="#">Elliot Boots</a></h3>
-                  <div class="product-pic-info-price-cart">
-                    <div class="product-pic-info-price">
-                      <span>$129</span>
-                      <label> </label>
+            <% @featured_categories.last.products.each do |product|%>
+                <div class="item">
+                  <div onclick="location.href='<%= product_path(product.id) %>';" class="product-grid">
+                    <div class="product-pic-2" style="width:245px">
+                      <%= image_tag(product.image.url(:medium))%>
                     </div>
-                    <div class="product-pic-info-cart">
-                      <a class="p-btn" href="#">Buy now</a>
+                    <div class="product-pic-info">
+                      <h3><a href="#"><%= product.name %></a></h3>
+                      <div class="product-pic-info-price-cart">
+                        <div class="product-pic-info-price">
+                          <span>$<%= product.price %></span>
+                        </div>
+                        <div class="product-pic-info-cart">
+                          <a class="p-btn" href="#">Add to cart</a>
+                        </div>
+                        <div class="clearfix"> </div>
+                      </div>
                     </div>
-                    <div class="clearfix"> </div>
                   </div>
                 </div>
-              </div>
-            </div>
-            <div class="item">
-              <div onclick="location.href='single-page.html';" class="product-grid">
-                <div class="product-pic">
-                  <%= image_tag('p5.jpg')%>
-                </div>
-                <div class="product-pic-info">
-                  <h3><a href="#">Elliot Boots</a></h3>
-                  <div class="product-pic-info-price-cart">
-                    <div class="product-pic-info-price">
-                      <span>$86</span>
-                      <label> </label>
-                    </div>
-                    <div class="product-pic-info-cart">
-                      <a class="p-btn" href="#">Buy now</a>
-                    </div>
-                    <div class="clearfix"> </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="item">
-              <div onclick="location.href='single-page.html';" class="product-grid">
-                <div class="product-pic">
-                  <%= image_tag('p6.jpg')%>
-                </div>
-                <div class="product-pic-info">
-                  <h3><a href="#">Elliot Boots</a></h3>
-                  <div class="product-pic-info-price-cart">
-                    <div class="product-pic-info-price">
-                      <span>$149</span>
-                      <label> </label>
-                    </div>
-                    <div class="product-pic-info-cart">
-                      <a class="p-btn" href="#">Buy now</a>
-                    </div>
-                    <div class="clearfix"> </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="item">
-              <div onclick="location.href='single-page.html';" class="product-grid">
-                <div class="product-pic">
-                  <%= image_tag('p1.jpg')%>
-                </div>
-                <div class="product-pic-info">
-                  <h3><a href="#">Elliot Boots</a></h3>
-                  <div class="product-pic-info-price-cart">
-                    <div class="product-pic-info-price">
-                      <span>$129</span>
-                      <label> </label>
-                    </div>
-                    <div class="product-pic-info-cart">
-                      <a class="p-btn" href="#">Buy now</a>
-                    </div>
-                    <div class="clearfix"> </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="item">
-              <div onclick="location.href='single-page.html';" class="product-grid">
-                <div class="product-pic">
-                  <%= image_tag('p4.jpg')%>
-                </div>
-                <div class="product-pic-info">
-                  <h3><a href="#">Elliot Boots</a></h3>
-                  <div class="product-pic-info-price-cart">
-                    <div class="product-pic-info-price">
-                      <span>$129</span>
-                      <label> </label>
-                    </div>
-                    <div class="product-pic-info-cart">
-                      <a class="p-btn" href="#">Buy now</a>
-                    </div>
-                    <div class="clearfix"> </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <% end %>
           </div>
-          <!--//sreen-gallery-cursual---->
-
         </div>
       </div>
     </div>
