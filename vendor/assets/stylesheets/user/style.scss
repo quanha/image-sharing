@@ -89,7 +89,7 @@ body a{
 	margin-top:1em;
 }
 .search-box{
-	float:left;
+	float:right;
 	width:60%;
 }
 .cart-box{
@@ -1182,8 +1182,7 @@ a.b-home:hover{
 }
 .details-right{
 	float: right;
-	width: 19%;
-	background: url(add.png) no-repeat 0px 0px;
+	width: 25%;
 	min-height: 600px;
 	border-left: 1px solid #eee;
 	text-align: center;
@@ -2009,4 +2008,31 @@ ul.ul-category{
 
 .product-grid{
 	cursor: pointer;
+}
+
+.price-product{
+	margin-top: 10px;
+
+}
+
+.sale-price{
+	font-size: 28px;
+	color: red;
+}
+
+.normal-price{
+	text-decoration: line-through;
+	margin-left: 20px;
+}
+
+.addToCart{
+	background: #4f4844;
+	padding: 0.5em 1em;
+	display: inline-block;
+	color: #FFF;
+	text-decoration: none;
+	margin-top: 1em;
+	border:none;
+	font-size:0.875em;
+	text-transform:uppercase;
 }

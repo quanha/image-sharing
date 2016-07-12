@@ -1,0 +1,11 @@
+<% if product_quantity.present? %>
+  <% product_quantity.each do |item| %>
+    <tr>
+      <td>
+        <%= item.store.name %>
+      </td>
+      <td> <%= item.quantity %>
+      </td>
+    </tr>
+  <% end %>
+<% end %>

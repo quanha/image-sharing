@@ -33,8 +33,29 @@ class PagesController < ActionController::Base
 
   end
 
-  def contact
+  def checkout
 
+  end
+
+  def get_store_quantity
+    quantities = ProductQuantity.joins(:store).where(product_quantities: {product_id: params[:product_id], size: params[:size]})
+    html = render_to_string(partial: 'pages/quantity_row', locals: { product_quantity: quantities})
+    render json: {raw_html: html}
+  end
+
+  def add_to_cart
+    cart = session[:cart].present? ? session[:cart] : Array.new
+    product = Product.find(params[:product_id])
+    if cart.include?(params[:product_id])
+      status = false
+      message = "#{product.name} is already in your cart"
+    else
+      cart.push(params[:product_id])
+      status = true
+      message = "You have added #{product.name} to your cart"
+    end
+    session[:cart] = cart
+    render json: {status: status, message: message}
   end
 
   private

@@ -5,7 +5,7 @@
       <ul class="products">
         <% @products.each do |product|%>
           <li class="item-product">
-            <div class="product-grid">
+            <div onclick="location.href='<%= product_path(product.id) %>'" class="product-grid">
               <div class="product-pic">
                 <%= image_tag(product.image.url(:medium))%>
               </div>
@@ -16,7 +16,7 @@
                     <span>$ <%= product.price %></span>
                   </div>
                   <div class="product-pic-info-cart">
-                    <a class="p-btn" href="#">Add to cart</a>
+                    <a class="p-btn addToCart" href="#" data-product="<%= product.id %>">Add to cart</a>
                   </div>
                   <div class="clearfix"> </div>
                 </div>

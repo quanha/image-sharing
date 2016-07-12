@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160704082415) do
+ActiveRecord::Schema.define(version: 20160708094512) do
 
   create_table "backend_menus", force: :cascade do |t|
     t.integer  "parent_id",     limit: 4
@@ -55,6 +55,18 @@ ActiveRecord::Schema.define(version: 20160704082415) do
     t.integer  "display_order", limit: 4
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.integer  "user_id",    limit: 4
+    t.integer  "total",      limit: 4
+    t.string   "phone",      limit: 255
+    t.string   "email",      limit: 255
+    t.string   "address",    limit: 255
+    t.string   "note",       limit: 255
+    t.integer  "status",     limit: 4
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   create_table "pages", force: :cascade do |t|

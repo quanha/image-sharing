@@ -22,7 +22,7 @@
   <div class="bottom-header">
     <div class="container">
       <div class="bottom-header-left">
-        <p>The Finest Genuine Leather meet with Ingenious  Craftsmen Shoes </p>
+        <p>The Finest Genuine Leather pagescmeet with Ingenious  Craftsmen Shoes </p>
       </div>
       <div class="logo">
         <%= link_to image_tag('logo.png', :alt => 'logo'), '/' %>
@@ -30,8 +30,7 @@
       <div class="bottom-header-right">
         <ul>
           <li><a href="#">My Account</a></li>
-          <li><a href="#">Wishlist</a></li>
-          <li><a href="#">Checkout</a></li>
+          <li><a href="<%=checkout_path %>">Checkout</a></li>
         </ul>
         <div class="search-cart">
           <div class="search-box">
@@ -39,13 +38,6 @@
               <input type="text" value="Search..." />
               <input type="submit" value="" />
             </form>
-          </div>
-          <div class="cart-box">
-            <select>
-              <option> 02 Items</option>
-              <option> 03 Items</option>
-              <option> 04 Items</option>
-            </select>
           </div>
           <div class="clearfix"> </div>
         </div>
