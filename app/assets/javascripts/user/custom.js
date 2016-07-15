@@ -6,7 +6,8 @@ $(document).ready(function(){
             dataType: 'json',
             url: "/pages/add_to_cart",
             data: {
-                product_id: $(this).data('product')
+                product_id: $(this).data('product'),
+                size: $(this).data('size')
             },
             success: function(data){
                 alert(data.message)

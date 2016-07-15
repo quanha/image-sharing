@@ -15,10 +15,11 @@ Rails.application.routes.draw do
   get 'contact' => 'pages#contact'
   get 'about_us' => 'pages#about_us'
   get 'product/:id' => 'pages#product', as: :product
-  get 'pages/checkout' => 'pages#checkout', as: :checkout
+  get 'pages/cart' => 'pages#cart', as: :cart
   get 'collections/:category_id/:product_type_id' => 'pages#collections', :as => :collections
   post 'pages/get_store_quantity' => 'pages#get_store_quantity', :as => :ajax_get_store_quantity
   post 'pages/add_to_cart' => 'pages#add_to_cart', :as => :ajax_add_to_cart
+  post 'pages/checkout' => 'pages#checkout', :as => :checkout
 
   namespace :admin do
     post '/backend_menus/ajax_update_position' => 'backend_menus#ajax_update_position'

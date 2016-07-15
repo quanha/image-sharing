@@ -33,6 +33,11 @@ class PagesController < ActionController::Base
 
   end
 
+  def cart
+    @order = Order.new
+
+  end
+
   def checkout
 
   end
@@ -44,22 +49,25 @@ class PagesController < ActionController::Base
   end
 
   def add_to_cart
-    cart = session[:cart].present? ? session[:cart] : Array.new
-    product = Product.find(params[:product_id])
-    if cart.include?(params[:product_id])
-      status = false
-      message = "#{product.name} is already in your cart"
+    cart = session[:cart].present? ? session[:cart] : Hash.new
+    product_quantity = ProductQuantity.where('product_id' => params[:product_id], 'size' => params[:size]).take!
+    if cart.has_key? product_quantity.id.to_s
+      message = "#{product_quantity.product.name} size #{params[:size]} is already in your cart"
     else
-      cart.push(params[:product_id])
-      status = true
-      message = "You have added #{product.name} to your cart"
+      cart[product_quantity.id.to_s] = ['product' => product_quantity.product, 'size' => params[:size], 'image' => product_quantity.product.image.url(:thumb)]
+      message = "You have added #{product_quantity.product.name} size #{params[:size]} to your cart"
     end
     session[:cart] = cart
-    render json: {status: status, message: message}
+    render json: {message: message}
   end
 
   private
   def set_menu
     @nav_menus = Menu.order(:display_order)
+  end
+
+  def order_params
+    params.require(:order).permit(:name, :description, :detail, :supplier_id, :image, :price, :sale_price, :product_type_id,
+                                    :code, product_quantities_attributes: [:id ,:size, :quantity, :store_id, :_destroy], category_ids: [] )
   end
 end

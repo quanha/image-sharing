@@ -1,0 +1,73 @@
+<div class="bottom-grids collections">
+  <div class="container">
+  <h1>Checkout</h1>
+    <%= form_for(@order, :url => checkout_path, :html => {class: 'form-horizontal', :html => {:multipart => true}}) do |f| %>
+      <div class="row">
+        <div class="col-md-8  col-md-offset-2">
+          <table class="table table-striped">
+            <tr>
+              <th width="5%">No.</th>
+              <th width="15%">Image</th>
+              <th width="50%">Name</th>
+              <th width="5%">Size</th>
+              <th width="5%">Quantity</th>
+              <th width="5%">Delete</th>
+            </tr>
+            <% session[:cart].each_with_index do  |(key,value),index| %>
+                <tr>
+                  <td><%= index + 1 %></td>
+                  <td><center><%= image_tag value.first['image'] %></center></td>
+                  <td><%= value.first['product']['name'] %></td>
+                  <td><%= value.first['size'] %></td>
+                  <td><center><%= 12 %></center></td>
+                  <td><%= 'Delete' %></td>
+                </tr>
+            <% end %>
+          </table>
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <strong>Please fill in your Information</strong>
+            </div>
+            <div class="panel-body">
+              <div class="form-group">
+                <div class="col-md-12">
+                  <label for="name" class="control-label"><%= f.label :name %></label>
+                  <%= f.text_field :name %>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-md-12">
+                  <label for="name" class="control-label"><%= f.label :email %></label>
+                  <%= f.text_field :email %>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-md-12">
+                  <label for="name" class="control-label"><%= f.label :phone %></label>
+                  <%= f.text_field :phone%>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-md-12">
+                  <label for="name" class="control-label"><%= f.label :address %></label>
+                  <%= f.text_area :address, class: 'form-control cart-form' %>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-md-12">
+                  <label for="name" class="control-label"><%= f.label :note %></label>
+                  <%= f.text_area :note, class: 'form-control cart-form' %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

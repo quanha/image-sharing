@@ -80,6 +80,7 @@
 <script>
   $(document).ready(function(){
     $('.getStockInfo').on('click', function(e){
+      $('.addToCart').data('size', $(this).data('size'));
       jQuery.ajax
       ({
         type: "POST",
