@@ -1,0 +1,14 @@
+<% flash.each do |message_type, message| %>
+  <% type = message_type.eql?('alert') ? 'danger' : message_type %>
+  <% if message.kind_of?(Array) %>
+    <% message.each do |msg| %>
+      <div class="alert alert-flash alert-<%= type %>" style="margin-bottom: 10px">
+      <%= msg %>
+      </div>
+    <% end %>
+  <% else %>
+    <div class="alert alert-flash alert-<%= type %>">
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
