@@ -7,3 +7,4 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
   User.create(email: 'admin@gmail.com', password: 'mothaiba', password_confirmation: 'mothaiba', first_name: 'Smart', last_name: 'Admin', role: 'admin')
+  Category.create(name: 'Collections', description: 'Collection of items', at_homepage: 1)
