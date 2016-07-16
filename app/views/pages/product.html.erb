@@ -1,85 +1,61 @@
-<div class="details-page">
-  <div class="content details-page">
-    <!---start-product-details--->
-    <div class="product-details">
-      <div class="container">
-        <ul class="product-head">
-          <li><a href="<%= root_path %>">Home</a> <span>></span></li>
-          <li class="<% %>">Product Page</li>
-          <div class="clearfix"> </div>
-        </ul>
-        <script>
-          jQuery(document).ready(function($){
-            $('#etalage').etalage({
-              thumb_image_width: 300,
-              thumb_image_height: 300,
-              source_image_width: 1000,
-              source_image_height: 1000,
-              show_hint: true,
-              click_callback: function(image_anchor, instance_id){
-                alert('Callback example:\nYou clicked on an image with the anchor: "'+image_anchor+'"\n(in Etalage instance: "'+instance_id+'")');
-              }
-            });
-          });
-        </script>
-        <div class="details-left">
-          <div class="details-left-slider">
-            <ul id="etalage" class="etalage" style="display: block; width: 314px; height: 552px;">
-              <% @product.pictures.each_with_index do |picture, index| %>
-              <li>
-                <img class="etalage_thumb_image" src="<%= picture.image.url(:medium) %>" style="display: inline; width: 300px; height: 400px; opacity: 1;">
-                <img class="etalage_source_image" src="<%= picture.image %>">
-              </li>
-              <% end %>
-            </ul>
-          </div>
-          <div class="details-left-info">
-            <div class="details-right-head">
-              <h1><%= @product.name %></h1>
-              <p class="product-detail-info">
-                <%= @product.description %>
-              </p>
-              <div class="product-more-details">
-                <div class="price-product">
-                  <% if @product.sale_price.present? %>
-                    <span class="sale-price">$<%= @product.sale_price %></span><span class="normal-price">$<%= @product.price %></span>
-                  <% else %>
-                    <span class="sale-price">$<%= @product.price %></span>
-                  <% end %>
-                </div>
-
-                <ul class="product-colors">
-                  <h3>Available Sizes</h3>
-                  <% @product.product_quantities.each do |quantity|%>
-                    <li><a href="#/" class="getStockInfo" data-product="<%=@product.id.to_i %>" data-size="<%= quantity.size.to_i %>" ><span><%= quantity.size %></span></a></li>
-                  <% end %>
-                  <div class="clearfix"></div>
-                </ul>
-                <table class="table .table-condensed">
-                  <tr>
-                    <th width="70%">Address</th>
-                    <th width="30%">Stock</th>
-                  </tr>
-                  <tbody id="table-quantity">
-                    <%= render partial: 'quantity_row', locals: {product_quantity: nil} %>
-                  </tbody>
-                  </tr>
-                </table>
-                <a href="#" class="p-btn addToCart" data-product="<%= @product.id %>">Add to cart</a>
-              </div>
-            </div>
-          </div>
-          <div class="clearfix"> </div>
-        </div>
-        <div class="clearfix"> </div>
-      </div>
-      <!---//End-product-details--->
+<div class="about">
+  <!----- header-section ---->
+  <div class="header-section">
+    <div class="container">
+      <h1>Product</h1>
     </div>
   </div>
+  <div class="about-grids">
+    <div class="container">
+      <div class="about-left-grids">
+        <div class="fotorama" data-width="700" data-autoplay="true" data-nav="thumbs" data-ratio="700/450" data-max-width="100%>
+        <% @product.pictures.each do |picture| %>
+            <img src="<%= picture.image %>">
+        <% end %>
+        </div>
+        <div class="product-detail">
+          <h4><%= @product.name %></h4>
+          <%= @product.detail.html_safe %>
+        </div>
+      </div>
+      <div class="about-right-grids-product">
+        <h4><%= @product.name %></h4>
+        <div class="price-product">
+          <% if @product.sale_price.present? %>
+              <strong>Price:</strong> <span class="sale-price">&nbsp;&nbsp;$<%= @product.sale_price %></span><span class="normal-price">$<%= @product.price %></span>
+          <% else %>
+              <strong>Price:</strong> <span class="sale-price">$<%= @product.price %></span>
+          <% end %>
+        </div>
+        <div class="available-size">
+          <strong>Available sizes:</strong><br>
+          <div class="btn-group-size" style="margin-top: 10px">
+            <% @product.product_quantities.group(:size).each do |quantity|%>
+                <button type="button" class="getStockInfo btn btn-default" data-product="<%=@product.id.to_i %>" data-size="<%= quantity.size.to_i %>" ><%= quantity.size %></button>
+            <% end %>
+          </div>
+        </div>
+        <div class="address">
+          <strong>Address:</strong><br>
+          <table class="table" style="margin-top: 10px; width: 27%">
+            <tbody id="table-quantity">
+              <%= render partial: 'quantity_row', locals: {product_quantity: nil} %>
+            </tbody>
+          </table>
+        </div>
+        <a style="margin-top: -10px" href="#" class="p-btn addToCart" data-product="<%= @product.id %>">Add to cart</a>
+      </div>
+      <div class="clearfix"> </div>
+    </div>
+  </div>
+
 </div>
+
 <script>
   $(document).ready(function(){
     $('.getStockInfo').on('click', function(e){
+      $('.btn-group-size button').css("background", "");
+      $(this).css("background", "lightsteelblue");
       $('.addToCart').data('size', $(this).data('size'));
       jQuery.ajax
       ({

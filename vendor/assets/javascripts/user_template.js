@@ -4,4 +4,4 @@
 //= require ./user/easyResponsiveTabs.js
 //= require ./user/owl.carousel.js
 //= require ./user/responsiveslides.min.js
-//= require ./user/jquery.etalage.min.js
+//= require ./user/fotorama.js

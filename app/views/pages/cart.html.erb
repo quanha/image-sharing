@@ -13,15 +13,17 @@
               <th width="5%">Quantity</th>
               <th width="5%">Delete</th>
             </tr>
-            <% session[:cart].each_with_index do  |(key,value),index| %>
-                <tr>
-                  <td><%= index + 1 %></td>
-                  <td><center><%= image_tag value.first['image'] %></center></td>
-                  <td><%= value.first['product']['name'] %></td>
-                  <td><%= value.first['size'] %></td>
-                  <td><center><%= 12 %></center></td>
-                  <td><%= 'Delete' %></td>
-                </tr>
+            <% if session[:cart].present? %>
+              <% session[:cart].each_with_index do  |(key,value),index| %>
+                  <tr>
+                    <td><%= index + 1 %></td>
+                    <td><center><%= image_tag value.first['image'] %></center></td>
+                    <td><%= value.first['product']['name'] %></td>
+                    <td><%= value.first['size'] %></td>
+                    <td><center><%= 12 %></center></td>
+                    <td><%= 'Delete' %></td>
+                  </tr>
+              <% end %>
             <% end %>
           </table>
         </div>
