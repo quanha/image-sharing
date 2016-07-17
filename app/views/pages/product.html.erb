@@ -30,7 +30,7 @@
         <div class="available-size">
           <strong>Available sizes:</strong><br>
           <div class="btn-group-size" style="margin-top: 10px">
-            <% @product.product_quantities.group('product_quantities.size').each do |quantity|%>
+            <% @product.product_quantities.each do |quantity|%>
                 <button type="button" class="getStockInfo btn btn-default" data-product="<%=@product.id.to_i %>" data-size="<%= quantity.size.to_i %>" ><%= quantity.size %></button>
             <% end %>
           </div>
