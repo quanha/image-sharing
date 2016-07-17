@@ -2080,3 +2080,29 @@ ul.ul-category{
 .product-pic img{
   width: 252px;
 }
+
+.btn-form{
+	background: #8b4613;
+	padding: 0.1em 0.5em;
+	display: inline-block;
+	color: #FFF;
+	text-decoration: none;
+	margin-top: 1em;
+	border:none;
+	outline:none;
+	font-size: 1.2em;
+	text-transform:uppercase;
+	transition:0.5s all;
+}
+
+.btn-form:hover{
+	background:#4f4844;
+}
+
+.select-quantity{
+	width: 64px;
+	height: 31px;
+	padding-left: 10px;
+	padding-top: 0px;
+	margin-top: -3px;
+}

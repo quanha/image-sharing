@@ -20,6 +20,8 @@ Rails.application.routes.draw do
   post 'pages/get_store_quantity' => 'pages#get_store_quantity', :as => :ajax_get_store_quantity
   post 'pages/add_to_cart' => 'pages#add_to_cart', :as => :ajax_add_to_cart
   post 'pages/checkout' => 'pages#checkout', :as => :checkout
+  post 'pages/remove_product' => 'pages#remove_product', :as => :ajax_remove_product
+  post 'pages/select_quantity' => 'pages#select_quantity', :as => :ajax_select_quantity
 
   namespace :admin do
     post '/backend_menus/ajax_update_position' => 'backend_menus#ajax_update_position'

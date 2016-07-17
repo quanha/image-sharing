@@ -82,7 +82,7 @@
      <div class="col-sm-8 col-sm-offset-2" style="display: block">
        <% @product.pictures.each do |picture| %>
            <div class="show-image">
-             <%= image_tag(picture.image.url(:medium))%>
+             <%= image_tag(picture.image.url(:thumb))%>
              <%= link_to('#', 'class' => 'btn btn-sm btn-default deleteImageProduct', :data => picture.id) do %>
                  <i class="fa fa-trash-o" title="Delete"></i>
              <% end %>

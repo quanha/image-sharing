@@ -35,7 +35,6 @@ class PagesController < ActionController::Base
 
   def cart
     @order = Order.new
-
   end
 
   def checkout
@@ -48,17 +47,32 @@ class PagesController < ActionController::Base
     render json: {raw_html: html}
   end
 
+  # ajax-cart
+
   def add_to_cart
     cart = session[:cart].present? ? session[:cart] : Hash.new
     product_quantity = ProductQuantity.where('product_id' => params[:product_id], 'size' => params[:size]).take!
     if cart.has_key? product_quantity.id.to_s
       message = "#{product_quantity.product.name} size #{params[:size]} is already in your cart"
     else
-      cart[product_quantity.id.to_s] = ['product' => product_quantity.product, 'size' => params[:size], 'image' => product_quantity.product.image.url(:thumb)]
+      cart[product_quantity.id.to_s] = Hash['product' => product_quantity.product, 'size' => params[:size], 'image' => product_quantity.product.image.url(:thumb), 'quantity' => '1']
       message = "You have added #{product_quantity.product.name} size #{params[:size]} to your cart"
     end
     session[:cart] = cart
     render json: {message: message}
+  end
+
+  def remove_product
+    status = false
+    if session[:cart].delete(params[:id].to_s)
+      status = true
+    end
+    render json: {status: status}
+  end
+
+  def select_quantity
+    session[:cart][params[:id].to_s]['quantity'] = params[:quantity]
+    render json: {status: true}
   end
 
   private
