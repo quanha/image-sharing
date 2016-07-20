@@ -1,96 +1,46 @@
 <div class="bottom-grids collections">
   <div class="container">
     <h1>Your Cart</h1>
-    <%= form_for(@order, :url => checkout_path, :html => {class: 'form-horizontal', :html => {:multipart => true}}) do |f| %>
-        <div class="row">
-          <div class="col-md-8  col-md-offset-2">
-            <% if session[:cart].present? %>
-                <table class="table table-striped">
-                  <tr>
-                    <th width="15%">Image</th>
-                    <th width="45%">Name</th>
-                    <th width="5%">Size</th>
-                    <th width="5%">Quantity</th>
-                    <th width="5%">Price</th>
-                    <th width="5%">Action</th>
-                  </tr>
-                  <% total = 0 %>
-                  <%= f.fields_for :order_products do |builder| %>
-                      <% session[:cart].each_with_index do  |(key,value), index| %>
-                          <% total += value['quantity'].to_i * value['product']['sale_price'].to_i %>
-                          <tr>
-                            <td><center><%= image_tag value['image'] %></center></td>
-                            <td><%= value['product']['name'] %></td>
-                            <td><%= value['size'] %></td>
-                            <td><center><%= select_tag '', options_for_select((1..20), :selected => value['quantity']), 'data-id' => key,class: 'select-quantity form-control' %></center></td>
-                            <td><center>$<%= value['product']['sale_price'] %></center></td>
-                            <td><a href="#/" class="deleteCart" data-id="<%= key %>">Remove</a> </td>
-                          </tr>
-                      <% end %>
-                  <% end %>
-                  <tr>
-                    <td colspan="3"></td>
-                    <td>
-                      Total:
-                    </td>
-                    <td  colspan="2">
-                      $<%= total %>
-                    </td>
-                  </tr>
+      <div class="row">
+        <div class="col-md-8  col-md-offset-2">
+          <% if session[:cart].present? %>
+            <table class="table table-striped">
+              <tr>
+                <th width="15%">Image</th>
+                <th width="45%">Name</th>
+                <th width="5%">Size</th>
+                <th width="5%">Quantity</th>
+                <th width="5%">Price</th>
+                <th width="5%">Action</th>
+              </tr>
+              <% total = 0 %>
+              <% session[:cart].each_with_index do  |(key,value), index| %>
+                <% total += value['quantity'].to_i * value['product']['sale_price'].to_i %>
+                <tr>
+                  <td><center><%= image_tag value['image'] %></center></td>
+                  <td><%= value['product']['name'] %></td>
+                  <td><%= value['size'] %></td>
+                  <td><center><%= select_tag '', options_for_select((1..20), :selected => value['quantity']), 'data-id' => key,class: 'select-quantity form-control' %></center></td>
+                  <td><center>$<%= value['product']['sale_price'] %></center></td>
+                  <td><a href="#/" class="deleteCart" data-id="<%= key %>">Remove</a> </td>
+                </tr>
+              <% end %>
+              <tr>
+                <td colspan="3"></td>
+                <td>
+                  Total:
+                </td>
+                <td  colspan="2">
+                  $<%= total %>
+                </td>
+              </tr>
             <% else %>
                 <strong>Your cart is empty</strong>
             <% end %>
             </table>
-          </div>
+          <a class="btn-form" style="float:right" href="<%= checkout_path %>">Check out</a>
         </div>
-        <hr>
-        <div class="row">
-          <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                <strong>Please fill in your Information</strong>
-              </div>
-              <div class="panel-body">
-                <div class="form-group">
-                  <div class="col-md-12">
-                    <label for="name" class="control-label"><%= f.label :name %></label>
-                    <%= f.text_field :name %>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <div class="col-md-12">
-                    <label for="name" class="control-label"><%= f.label :email %></label>
-                    <%= f.text_field :email %>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <div class="col-md-12">
-                    <label for="name" class="control-label"><%= f.label :phone %></label>
-                    <%= f.text_field :phone %>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <div class="col-md-12">
-                    <label for="name" class="control-label"><%= f.label :address %></label>
-                    <%= f.text_area :address, class: 'form-control cart-form' %>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <div class="col-md-12">
-                    <label for="name" class="control-label"><%= f.label :note %></label>
-                    <%= f.text_area :note, class: 'form-control cart-form' %>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <div class="col-md-12">
-                    <%= f.submit 'Submit', :class => 'btn-form', :style => 'float:right' %>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-    <% end %>
+      </div>
   </div>
 </div>
 

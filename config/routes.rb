@@ -16,10 +16,10 @@ Rails.application.routes.draw do
   get 'about_us' => 'pages#about_us'
   get 'product/:id' => 'pages#product', as: :product
   get 'pages/cart' => 'pages#cart', as: :cart
+  get 'pages/checkout' => 'pages#checkout', :as => :checkout
   get 'collections/:category_id/:product_type_id' => 'pages#collections', :as => :collections
   post 'pages/get_store_quantity' => 'pages#get_store_quantity', :as => :ajax_get_store_quantity
   post 'pages/add_to_cart' => 'pages#add_to_cart', :as => :ajax_add_to_cart
-  post 'pages/checkout' => 'pages#checkout', :as => :checkout
   post 'pages/remove_product' => 'pages#remove_product', :as => :ajax_remove_product
   post 'pages/select_quantity' => 'pages#select_quantity', :as => :ajax_select_quantity
 

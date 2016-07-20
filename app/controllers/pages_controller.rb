@@ -34,11 +34,11 @@ class PagesController < ActionController::Base
   end
 
   def cart
-    @order = Order.new
+
   end
 
   def checkout
-
+    @order = Order.new
   end
 
   def get_store_quantity

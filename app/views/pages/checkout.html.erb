@@ -1,6 +1,6 @@
 <div class="bottom-grids collections">
   <div class="container">
-    <h1>Checkout</h1>
+    <h1>Your Cart</h1>
     <%= form_for(@order, :url => checkout_path, :html => {class: 'form-horizontal', :html => {:multipart => true}}) do |f| %>
         <div class="row">
           <div class="col-md-8  col-md-offset-2">
@@ -12,20 +12,27 @@
                     <th width="5%">Size</th>
                     <th width="5%">Quantity</th>
                     <th width="5%">Price</th>
-                    <th width="5%">Action</th>
                   </tr>
-                  <%= f.fields_for :order_products do |builder| %>
-                      <% session[:cart].each_with_index do  |(key,value), index| %>
-                          <tr>
-                            <td><center><%= image_tag value.first['image'] %></center></td>
-                            <td><%= value.first['product']['name'] %></td>
-                            <td><%= value.first['size'] %></td>
-                            <td><center><%= 12 %></center></td>
-                            <td><center><%= value.first['product']['sale_price'] %></center></td>
-                            <td><a href="#/" class="deleteCart" data-id="<%= key %>">Remove</a> </td>
-                          </tr>
-                      <% end %>
-                  <% end %>
+                  <% total = 0 %>
+                    <% session[:cart].each_with_index do  |(key,value), index| %>
+                      <% total += value['quantity'].to_i * value['product']['sale_price'].to_i %>
+                      <tr>
+                        <td><center><%= image_tag value['image'] %></center></td>
+                        <td><%= value['product']['name'] %></td>
+                        <td><%= value['size'] %></td>
+                        <td><center><%= value['quantity'] %></center></td>
+                        <td><center>$<%= value['product']['sale_price'] %></center></td>
+                      </tr>
+                    <% end %>
+                  <tr>
+                    <td colspan="3"></td>
+                    <td>
+                      Total:
+                    </td>
+                    <td  colspan="2">
+                      $<%= total %>
+                    </td>
+                  </tr>
             <% else %>
                 <strong>Your cart is empty</strong>
             <% end %>
