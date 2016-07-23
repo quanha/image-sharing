@@ -34,12 +34,39 @@ class PagesController < ActionController::Base
   end
 
   def cart
-
   end
 
   def checkout
     @order = Order.new
+    if session[:cart].blank?
+      flash[:danger] = 'You do not have any thing in cart.'
+      redirect_to cart_path
+    end
   end
+
+  def save_order
+    @order = Order.new(order_params)
+    respond_to do |format|
+      if @order.save
+        session[:cart].each_with_index do  |(key,item), index|
+          OrderProduct.new(product_id: item['product_id'].to_i, size: item['size'].to_i, quantity: item['quantity'].to_i, order_id: @order.id).save!
+          ProductQuantity.subtract_quantity(item['product_id'].to_i, item['size'].to_i, item['quantity'].to_i)
+        end
+        session[:cart] = nil
+        flash[:success] = ' We will deliver your ordered product(s) to you soon. Thank you for your support.'
+        format.html { redirect_to order_success_path }
+      else
+        flash.now[:danger] = @order.errors.full_messages
+        format.html { render checkout_path }
+      end
+    end
+  end
+
+  def order_success
+
+  end
+
+  # ajax-cart
 
   def get_store_quantity
     quantities = ProductQuantity.joins(:store).where(product_quantities: {product_id: params[:product_id], size: params[:size]})
@@ -47,15 +74,13 @@ class PagesController < ActionController::Base
     render json: {raw_html: html}
   end
 
-  # ajax-cart
-
   def add_to_cart
     cart = session[:cart].present? ? session[:cart] : Hash.new
     product_quantity = ProductQuantity.where('product_id' => params[:product_id], 'size' => params[:size]).take!
     if cart.has_key? product_quantity.id.to_s
       message = "#{product_quantity.product.name} size #{params[:size]} is already in your cart"
     else
-      cart[product_quantity.id.to_s] = Hash['product' => product_quantity.product, 'size' => params[:size], 'image' => product_quantity.product.image.url(:thumb), 'quantity' => '1']
+      cart[product_quantity.id.to_s] = Hash['product_id' => product_quantity.product.id, 'product' => product_quantity.product, 'size' => params[:size], 'image' => product_quantity.product.image.url(:thumb), 'quantity' => '1']
       message = "You have added #{product_quantity.product.name} size #{params[:size]} to your cart"
     end
     session[:cart] = cart
@@ -71,7 +96,14 @@ class PagesController < ActionController::Base
   end
 
   def select_quantity
-    session[:cart][params[:id].to_s]['quantity'] = params[:quantity]
+    cart_product = session[:cart][params[:id].to_s]
+    current_quantity = ProductQuantity.get_quantity(cart_product['product_id'].to_i, cart_product['size'].to_i)
+    if  current_quantity < params[:quantity].to_i
+      session[:cart][params[:id].to_s]['quantity'] = current_quantity
+      flash[:danger] = "#{cart_product['product']['name']} size #{cart_product['size']} only has #{current_quantity} product(s). Please contact the shop manager to order more."
+    else
+      session[:cart][params[:id].to_s]['quantity'] = params[:quantity]
+    end
     render json: {status: true}
   end
 
@@ -81,7 +113,7 @@ class PagesController < ActionController::Base
   end
 
   def order_params
-    params.require(:order).permit(:name, :description, :detail, :supplier_id, :image, :price, :sale_price, :product_type_id,
-                                    :code, product_quantities_attributes: [:id ,:size, :quantity, :store_id, :_destroy], category_ids: [] )
+    params[:order][:user_id] = current_user.id if current_user.present?
+    params.require(:order).permit(:name, :email, :phone, :address, :note, :user_id)
   end
 end

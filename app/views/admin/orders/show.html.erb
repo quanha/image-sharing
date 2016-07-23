@@ -1,0 +1,86 @@
+<div class="row">
+  <div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
+    <h1 class="page-title txt-color-blueDark">
+      <i class="fa fa-cog fa-fw "></i>
+      <%= 'System' %>
+      <span>&gt;
+        <%= link_to 'List of orders', admin_orders_path %>
+            </span>
+    </h1>
+  </div>
+</div>
+<div class="row">
+  <article class="col-sm-12 col-md-12 col-lg-12 sortable-grid ui-sortable">
+
+    <div class="jarviswidget jarviswidget-sortable jarviswidget-color-darken" id="wid-id-4" data-widget-editbutton="false" data-widget-custombutton="false" role="widget" style="">
+
+      <header role="heading">
+        <span class="widget-icon">
+            <i class="fa fa-user"></i>
+        </span>
+        <h2><%= 'Order detail' %></h2>
+      </header>
+
+      <div role="content">
+        <div class="widget-body">
+          <fieldset>
+            <table id="user" class="table table-bordered table-striped" style="clear: both">
+              <tbody>
+              <% if @order.user.present? %>
+                  <tr>
+                    <td ><strong>User</strong></td>
+                    <td colspan="3"><%= @order.user.full_name %></td>
+                  </tr>
+              <% end %>
+              <tr>
+                <td style="width:20%"><strong>Name</strong></td>
+                <td colspan="3"><%= @order.name %></td>
+              </tr>
+              <tr>
+                <td><strong>Phone</strong></td>
+                <td colspan="3"><%= @order.phone %></td>
+              </tr>
+              <tr>
+                <td><strong>Address</strong></td>
+                <td colspan="3"><%= @order.address %></td>
+              </tr>
+              <tr>
+                <td><strong>Email</strong></td>
+                <td colspan="3"><%= @order.email %></td>
+              </tr>
+              <tr>
+                <td><strong>Note</strong></td>
+                <td colspan="3"><%= @order.note %></td>
+              </tr>
+              <tr>
+                <td rowspan="<%= @order.order_products.count + 1 %>"><strong>Products</strong></td>
+                <td><strong>Name</strong></td>
+                <td><strong>Size</strong></td>
+                <td><strong>Quantity</strong></td>
+              </tr>
+              <% @order.order_products.each do |item| %>
+                  <tr>
+                    <td><%= link_to item.product.name, product_path(item.product_id), target: '_blank' %></td>
+                    <td><%= item.size %></td>
+                    <td><%= item.quantity %></td>
+                  </tr>
+              <% end %>
+              </tbody>
+            </table>
+          </fieldset>
+
+          <div class="form-actions">
+            <div class="row">
+              <div class="col-md-12">
+                <%= link_to 'Back', admin_orders_path, :class => 'btn btn-default'%>
+                <%= link_to 'Edit', edit_admin_order_path(@order) , :class => 'btn btn-primary'%>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </article>
+</div>

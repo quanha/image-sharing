@@ -3,6 +3,7 @@
     <h1>Your Cart</h1>
       <div class="row">
         <div class="col-md-8  col-md-offset-2">
+          <%= render "shared/user/message" %>
           <% if session[:cart].present? %>
             <table class="table table-striped">
               <tr>
@@ -38,7 +39,9 @@
                 <strong>Your cart is empty</strong>
             <% end %>
             </table>
-          <a class="btn-form" style="float:right" href="<%= checkout_path %>">Check out</a>
+          <% if session[:cart].present? %>
+              <a class="btn-form" style="float:right" href="<%= checkout_path %>">Check out</a>
+          <% end %>
         </div>
       </div>
   </div>

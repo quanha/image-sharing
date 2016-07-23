@@ -20,7 +20,7 @@ class Admin::StoresController < AdminController
 
     respond_to do |format|
       if @store.save
-        flash[:success] = 'Supplier was successfully created.'
+        flash[:success] = 'Store was successfully created.'
         format.html { redirect_to admin_stores_path }
       else
         flash.now[:danger] = @store.errors.full_messages

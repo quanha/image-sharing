@@ -1,7 +1,7 @@
 <div class="bottom-grids collections">
   <div class="container">
     <h1>Your Cart</h1>
-    <%= form_for(@order, :url => checkout_path, :html => {class: 'form-horizontal', :html => {:multipart => true}}) do |f| %>
+    <%= form_for(@order, :url => save_order_path, :html => {class: 'form-horizontal', :html => {:multipart => true}}) do |f| %>
         <div class="row">
           <div class="col-md-8  col-md-offset-2">
             <% if session[:cart].present? %>
@@ -47,6 +47,7 @@
                 <strong>Please fill in your Information</strong>
               </div>
               <div class="panel-body">
+                <%= render "shared/user/message" %>
                 <div class="form-group">
                   <div class="col-md-12">
                     <label for="name" class="control-label"><%= f.label :name %></label>

@@ -17,17 +17,21 @@ Rails.application.routes.draw do
   get 'product/:id' => 'pages#product', as: :product
   get 'pages/cart' => 'pages#cart', as: :cart
   get 'pages/checkout' => 'pages#checkout', :as => :checkout
+  get 'pages/order_success' => 'pages#order_success', :as => :order_success
   get 'collections/:category_id/:product_type_id' => 'pages#collections', :as => :collections
   post 'pages/get_store_quantity' => 'pages#get_store_quantity', :as => :ajax_get_store_quantity
   post 'pages/add_to_cart' => 'pages#add_to_cart', :as => :ajax_add_to_cart
   post 'pages/remove_product' => 'pages#remove_product', :as => :ajax_remove_product
   post 'pages/select_quantity' => 'pages#select_quantity', :as => :ajax_select_quantity
+  post 'pages/save_order' => 'pages#save_order', :as => :save_order
 
   namespace :admin do
+    root 'users#index'
     post '/backend_menus/ajax_update_position' => 'backend_menus#ajax_update_position'
     post '/menus/ajax_update_position' => 'menus#ajax_update_position'
     post '/products/delete_image' => 'products#delete_image'
 
+    resources :orders
     resources :users
     resources :products
     resources :suppliers

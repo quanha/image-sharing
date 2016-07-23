@@ -16,4 +16,8 @@ class User < ActiveRecord::Base
   def update_check_password params
     params[:password].blank? ? self.update_without_password(params) : self.update(params)
   end
+
+  def full_name
+    self.first_name+' '+self.last_name
+  end
 end
