@@ -77,10 +77,10 @@ Rails.application.configure do
   config.paperclip_defaults = {
       storage: :s3,
       s3_credentials: {
-          bucket: 'gaiashop',
-          access_key_id: 'AKIAJXP5OHEOPW7K4I4A',
-          secret_access_key: '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',
-          s3_region: 'ap-northeast-1',
+          bucket: ENV.fetch('S3_BUCKET_NAME'),
+          access_key_id: ENV.fetch('AWS_ACCESS_KEY_ID'),
+          secret_access_key: ENV.fetch('AWS_SECRET_ACCESS_KEY'),
+          s3_region: ENV.fetch('AWS_REGION'),
       }
   }
 
