@@ -3,7 +3,7 @@
     <h2>Product Types</h2>
     <div class="list-category">
       <ul class="ul-category">
-        <% @product_types.each do |type| %>
+        <% @product_types.group(:name).each do |type| %>
           <li class="item-category <%= (type.id == params[:product_type_id].to_i) ? 'active' : '' %>">
             <%= link_to type.name, collections_path(params[:category_id], type.id) %>
           </li>

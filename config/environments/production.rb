@@ -74,6 +74,16 @@ Rails.application.configure do
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
 
+  config.paperclip_defaults = {
+      storage: :s3,
+      s3_credentials: {
+          bucket: 'gaiashop',
+          access_key_id: 'AKIAJXP5OHEOPW7K4I4A',
+            secret_access_key: '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',
+          s3_region: 'Tokyo',
+      }
+  }
+
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 end

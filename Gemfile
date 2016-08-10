@@ -36,6 +36,8 @@ gem 'devise-bootstrap-views'
 
 gem 'paperclip'
 
+gem 'aws-sdk', '~> 2.3'
+
 gem 'kaminari'
 gem 'enumerize'
 
