@@ -79,8 +79,8 @@ Rails.application.configure do
       s3_credentials: {
           bucket: 'gaiashop',
           access_key_id: 'AKIAJXP5OHEOPW7K4I4A',
-            secret_access_key: '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',
-          s3_region: 'Tokyo',
+          secret_access_key: 'tzePilz9biujHnmjCCSMwypI845WQpxPQo5/QFYe',
+          s3_region: 'ap-northeast-1',
       }
   }
 
