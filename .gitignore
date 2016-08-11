@@ -49,3 +49,5 @@ bower.json
 
 app/views/user/
 public/assets/
+
+config/application.yml
