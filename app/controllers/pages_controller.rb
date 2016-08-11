@@ -111,9 +111,10 @@ class PagesController < ActionController::Base
   def select_quantity
     cart_product = session[:cart][params[:id].to_s]
     current_quantity = ProductQuantity.get_quantity(cart_product['product_id'].to_i, cart_product['size'].to_i)
-    if  current_quantity < params[:quantity].to_i
+    product = Product.find(cart_product['product_id'].to_i)
+    if current_quantity < params[:quantity].to_i
       session[:cart][params[:id].to_s]['quantity'] = current_quantity
-      flash[:danger] = "#{cart_product['product']['name']} size #{cart_product['size']} only has #{current_quantity} product(s). Please contact the shop manager to order more."
+      flash[:danger] = "#{product.name} size #{cart_product['size']} only has #{current_quantity} product(s). Please contact the shop manager to order more."
     else
       session[:cart][params[:id].to_s]['quantity'] = params[:quantity]
     end
