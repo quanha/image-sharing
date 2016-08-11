@@ -50,17 +50,17 @@ Rails.application.configure do
   # Raises helpful error messages.
   config.assets.raise_runtime_errors = true
 
-  config.paperclip_defaults = {
-      storage: :s3,
-      s3_credentials: {
-          bucket: 'gaiashop',
-          access_key_id: 'AKIAJXP5OHEOPW7K4I4A',
-          secret_access_key: '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',
-          s3_region: 'ap-northeast-1',
-      },
-      :url =>':s3_domain_url',
-      :path => '/:class/:attachment/:id_partition/:style/:filename'
-  }
+  # config.paperclip_defaults = {
+  #     storage: :s3,
+  #     s3_credentials: {
+  #         bucket: 'gaiashop',
+  #         access_key_id: 'AKIAJXP5OHEOPW7K4I4A',
+  #         secret_access_key: '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',
+  #         s3_region: 'ap-northeast-1',
+  #     },
+  #     :url =>':s3_domain_url',
+  #     :path => '/:class/:attachment/:id_partition/:style/:filename'
+  # }
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true

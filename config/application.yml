@@ -1,0 +1,17 @@
+
+defaults: &defaults
+  bucket: gaiashop
+  access_key_id: AKIAJXP5OHEOPW7K4I4A
+  secret_access_key: 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
+  s3_region: ap-northeast-1
+  secret: 6f7e6cf58c7cbd3d97d2f85b81573f6aeaf741bddc84206b404e7f0cb905194964a517fac8a82b12755a10bb5584d7b2d91861c4f136185dfbce3746fbbdd358
+
+development:
+  <<: *defaults
+    secret: 6f7e6cf58c7cbd3d97d2f85b81573f6aeaf741bddc84206b404e7f0cb905194964a517fac8a82b12755a10bb5584d7b2d91861c4f136185dfbce3746fbbdd358
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults

@@ -30,7 +30,7 @@
         <ul class="rslides" id="slider4">
           <% @slides.each do |slide| %>
           <li>
-            <%= image_tag(slide.image.url, :class => 'img-responsive banner-image') %>
+            <%= image_tag(slide.image.url(:banner), :class => 'img-responsive banner-image') %>
             <div class="slider-caption">
               <h1><%= slide.name %></h1>
               <p><%= slide.description %></p>
