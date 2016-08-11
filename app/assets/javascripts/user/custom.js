@@ -11,6 +11,9 @@ $(document).ready(function(){
             },
             success: function(data){
                 alert(data.message)
+            },
+            error: function(){
+                alert('Something went wrong');
             }
         });
         e.preventDefault();

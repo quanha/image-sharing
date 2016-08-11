@@ -16,13 +16,14 @@
               </tr>
               <% total = 0 %>
               <% session[:cart].each_with_index do  |(key,value), index| %>
-                <% total += value['quantity'].to_i * value['product']['sale_price'].to_i %>
+                  <%  %>
+                <% total += value['quantity'].to_i * @products[value['product_id']]['sale_price'] %>
                 <tr>
-                  <td><center><%= image_tag value['image'] %></center></td>
-                  <td><%= value['product']['name'] %></td>
+                  <td><center><%= image_tag @products[value['product_id']].image.url(:thumb) %></center></td>
+                  <td><%= @products[value['product_id']].name %></td>
                   <td><%= value['size'] %></td>
                   <td><center><%= select_tag '', options_for_select((1..20), :selected => value['quantity']), 'data-id' => key,class: 'select-quantity form-control' %></center></td>
-                  <td><center>$<%= value['product']['sale_price'] %></center></td>
+                  <td><center>$<%= @products[value['product_id']]['sale_price'] %></center></td>
                   <td><a href="#/" class="deleteCart" data-id="<%= key %>">Remove</a> </td>
                 </tr>
               <% end %>

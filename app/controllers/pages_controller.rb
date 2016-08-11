@@ -34,9 +34,22 @@ class PagesController < ActionController::Base
   end
 
   def cart
+    temp_product = Product.all
+    hsh = Hash.new
+    temp_product.each do |item|
+      hsh[item.id] = item
+    end
+    @products = hsh
   end
 
   def checkout
+    temp_product = Product.all
+    hsh = Hash.new
+    temp_product.each do |item|
+      hsh[item.id] = item
+    end
+    @products = hsh
+
     @order = Order.new
     if session[:cart].blank?
       flash[:danger] = 'You do not have any thing in cart.'
@@ -80,7 +93,7 @@ class PagesController < ActionController::Base
     if cart.has_key? product_quantity.id.to_s
       message = "#{product_quantity.product.name} size #{params[:size]} is already in your cart"
     else
-      cart[product_quantity.id.to_s] = Hash['product_id' => product_quantity.product.id, 'product' => product_quantity.product, 'size' => params[:size], 'image' => product_quantity.product.image.url(:thumb), 'quantity' => '1']
+      cart[product_quantity.id.to_s] = Hash['product_id' => product_quantity.product.id, 'size' => params[:size], 'quantity' => '1']
       message = "You have added #{product_quantity.product.name} size #{params[:size]} to your cart"
     end
     session[:cart] = cart

@@ -57,7 +57,9 @@ Rails.application.configure do
           access_key_id: 'AKIAJXP5OHEOPW7K4I4A',
           secret_access_key: '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',
           s3_region: 'ap-northeast-1',
-      }
+      },
+      :url =>':s3_domain_url',
+      :path => '/:class/:attachment/:id_partition/:style/:filename'
   }
 
   # Raises error for missing translations
