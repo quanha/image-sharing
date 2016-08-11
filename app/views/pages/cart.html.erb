@@ -57,7 +57,7 @@
         url: '<%= ajax_remove_product_path %>',
         data: 'id='+$(this).data('id'),
         success: function(){
-          $(this).closest('tr').hide();
+          location.reload();
         }
       });
     });
