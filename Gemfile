@@ -43,6 +43,8 @@ gem 'enumerize'
 
 gem 'font-awesome-sass', '~> 4.6.2'
 
+gem 'figaro'
+
 gem 'ckeditor'
 
 gem 'activerecord-session_store', github: 'rails/activerecord-session_store'

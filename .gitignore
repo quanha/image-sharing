@@ -51,3 +51,7 @@ app/views/user/
 public/assets/
 
 config/application.yml
+config/database.yml
+
+# Ignore application configuration
+/config/application.yml
