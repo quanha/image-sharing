@@ -13,6 +13,7 @@ development:
 
 test:
   <<: *defaults
+  HOST: localhost:3000
 
 production:
   <<: *defaults
