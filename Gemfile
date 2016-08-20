@@ -44,7 +44,7 @@ gem 'enumerize'
 gem 'font-awesome-sass', '~> 4.6.2'
 
 gem 'ckeditor'
-
+gem 'passenger'
 gem 'activerecord-session_store', github: 'rails/activerecord-session_store'
 
 # Use ActiveModel has_secure_password
