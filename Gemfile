@@ -40,6 +40,7 @@ gem 'aws-sdk', '~> 2.3'
 
 gem 'kaminari'
 gem 'enumerize'
+gem 'passenger'
 
 gem 'font-awesome-sass', '~> 4.6.2'
 

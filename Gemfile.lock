@@ -138,6 +138,9 @@ GEM
       cocaine (~> 0.5.5)
       mime-types
       mimemagic (~> 0.3.0)
+    passenger (5.0.30)
+      rack
+      rake (>= 0.8.1)
     pg (0.18.4)
     pkg-config (1.1.7)
     rack (1.6.4)
@@ -243,6 +246,7 @@ DEPENDENCIES
   less-rails
   mysql2
   paperclip
+  passenger
   pg
   rails (= 4.2.5)
   rails_12factor
