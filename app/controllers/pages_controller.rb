@@ -8,6 +8,7 @@ class PagesController < ActionController::Base
   def index
     @slides = Slide.all
     @featured_categories = Category.where(at_homepage: true).limit(2)
+    @featured_product_types = ProductType.where(homepage: true).where.not(collection_homepage: nil)
   end
 
   def collections

@@ -28,11 +28,13 @@
               <th class="hasinput"><input type="text" class="form-control" placeholder="Filter name" /></th>
               <th class="hasinput"><input type="text" class="form-control" placeholder="Filter description" /></th>
               <th class="hasinput" ></th>
+              <th class="hasinput" ></th>
             </tr>
             <tr>
               <th width="14%">Image</th>
               <th width="10%">Name</th>
               <th>Description</th>
+              <th width="14%">Actions</th>
               <th width="14%">Actions</th>
             </tr>
             </thead>
@@ -42,6 +44,7 @@
                   <td><center><%= image_tag(product_type.image.url(:thumb)) %></center></td>
                   <td><%= product_type.name %></td>
                   <td><%= product_type.description %></td>
+                  <td><center><%= product_type.homepage == 0 ? 'False' : 'True' %></center></td>
                   <td>
                     <center>
                       <%= link_to(edit_admin_product_type_path(product_type), 'escape' => false, 'class' => 'btn btn-sm btn-default') do%>

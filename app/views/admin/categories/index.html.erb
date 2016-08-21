@@ -41,7 +41,7 @@
                 <tr>
                   <td><%= category.name %></td>
                   <td><%= category.description %></td>
-                  <td><center><% concat category.at_homepage.present? ? 'True' : 'False'  %></center></td>
+                  <td><center><%= category.at_homepage == 0 ? 'False' : 'True' %></center></td>
                   <td>
                     <center>
                       <%= link_to(edit_admin_category_path(category), 'escape' => false, 'class' => 'btn btn-sm btn-default') do%>

@@ -5,33 +5,23 @@
 <!-- top-grids -->
 <div class="top-grids">
   <div class="container">
-    <div class="col-md-4 top-grid text-center">
-      <div class="top-grid-pic">
-        <%= image_tag('pic01.png') %>
-        <span>Boots</span>
-      </div>
-      <div class="top-grid-pic-info">
-        <a href="single-page.html">Seeall</a>
-      </div>
-    </div>
-    <div class="col-md-4 top-grid text-center">
-      <div class="top-grid-pic">
-        <%= image_tag('pic02.png') %>
-        <span>Casual</span>
-      </div>
-      <div class="top-grid-pic-info">
-        <a href="single-page.html">Seeall</a>
-      </div>
-    </div>
-    <div class="col-md-4 top-grid text-center">
-      <div class="top-grid-pic">
-        <%= image_tag('pic03.png') %>
-        <span>Formal</span>
-      </div>
-      <div class="top-grid-pic-info">
-        <a href="single-page.html">Seeall</a>
-      </div>
-    </div>
+    <%
+      if @featured_product_types.present?
+        @featured_product_types.each do |item|
+    %>
+            <div class="col-md-4 top-grid text-center">
+              <div class="top-grid-pic">
+                <%= image_tag(item.image.url(:medium)) %>
+                <span><%= item.name %></span>
+              </div>
+              <div class="top-grid-pic-info">
+                <a href="<%= collections_path(item.collection_homepage, item.id) %>">Seeall</a>
+              </div>
+            </div>
+    <%
+        end
+      end
+    %>
     <div class="clearfix"> </div>
   </div>
 </div>

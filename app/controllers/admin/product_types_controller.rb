@@ -55,6 +55,6 @@ class Admin::ProductTypesController < AdminController
     end
 
     def product_type_params
-      params.require(:product_type).permit(:name, :description, :image )
+      params.require(:product_type).permit(:name, :description, :image, :homepage, :collection_homepage)
     end
 end
